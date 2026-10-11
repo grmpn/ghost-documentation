@@ -7,8 +7,9 @@ Ghost project remains the source of truth for facts, engineering notes, and orig
 
 `iterations/06-symbol-reveal/` — the current responsive, buildless prototype.
 The opening spells GHOST with the isolated blue symbol replacing the O. Silver Ubuntu
-Sans Semibold 600 lettering frames the brighter symbol. As the visitor scrolls, the shell
-emerges in front of the title and the lettering recedes. The full Ghost remains briefly
+Sans Semibold 600 lettering frames the brighter symbol. Scrolling first fades the lettering
+completely away, leaving a brief symbol-only beat; then the shell fades in. These phases
+do not overlap. The full Ghost remains briefly
 before the pinned opening releases into the project details. Navigation appears near the
 end of the reveal. There is no automatic playback or scroll interception.
 
@@ -97,7 +98,7 @@ All prose is draft copy based on `Knowledge/Sections/` and current validation st
 All current versions preserve the front image's transparency. Iteration 06 uses CSS
 brightness/desaturation and a masked symbol layer. The accessible H1 is named GHOST while
 the visual center slot lets the blue symbol serve as the O. The shell is layered above
-the silver letters and revealed by scroll progress. The source image is unchanged and
+the silver letters but only revealed after they have fully faded. The source image is unchanged and
 its use does not complete `HERO-01`. Glass surfaces have an opaque
 fallback for unsupported blur and reduced-transparency preferences.
 The CAD cam illustration is not evidence of an installed, validated revision. The routine

@@ -35,12 +35,13 @@
   function updateNavigation() {
     const distance = Math.max(1, runway.offsetHeight - stage.offsetHeight);
     const progress = clamp(-runway.getBoundingClientRect().top / distance);
-    const shell = reducedMotion.matches ? 1 : smooth(.06, .82, progress);
+    // Finish the lettering fade, hold the symbol alone, then reveal the shell.
+    const shell = reducedMotion.matches ? 1 : smooth(.38, .9, progress);
     stage.style.setProperty('--shell-opacity', shell.toFixed(4));
     stage.style.setProperty('--shell-light', (.25 + shell * 1.3).toFixed(4));
-    stage.style.setProperty('--word-opacity', (1 - smooth(.2, .72, progress)).toFixed(4));
+    stage.style.setProperty('--word-opacity', (1 - smooth(.02, .32, progress)).toFixed(4));
     // Leave the opening uninterrupted; bring navigation in as the reveal completes.
-    const visible = reducedMotion.matches ? window.scrollY > 80 : progress > .72;
+    const visible = reducedMotion.matches ? window.scrollY > 80 : progress > .9;
     header.classList.toggle('is-visible', visible);
     header.inert = !visible;
     header.setAttribute('aria-hidden', String(!visible));

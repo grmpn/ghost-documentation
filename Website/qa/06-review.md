@@ -2,6 +2,19 @@
 
 Current prototype: `Website/iterations/06-symbol-reveal/`.
 
+## Sequential fade refinement
+
+- Lettering now fades over progress 0.02–0.32; shell reveal runs over 0.38–0.90.
+  Their ranges do not overlap, and the symbol stays lit between and throughout them.
+- Desktop scroll verified: at 174 px, title opacity 0.5183 / shell 0; at 366 px, both
+  are 0; at 670.7 px, title 0 / shell 0.5034; at 976 px, title 0 / shell 1 and header visible.
+- Visually checked the text-only fade, symbol-only interval, and emerging shell without
+  lettering. Saved `06-text-fading.png`, `06-symbol-only.png`, refreshed `06-emerging.png`.
+- Node syntax and whitespace checks passed. Layout, media, and fallback paths are unchanged;
+  prior responsive checks remain applicable. The initial overlapping timing below is superseded.
+
+## Initial pass
+
 - Node syntax checks passed for the interaction/media scripts and preview server.
 - Structure/resources passed: ten sections, 30 unique IDs, one accessible GHOST H1,
   seven images with alternatives (one decorative layer), valid anchors, 19 served files.
