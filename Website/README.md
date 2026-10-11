@@ -5,17 +5,16 @@ Ghost project remains the source of truth for facts, engineering notes, and orig
 
 ## Current iteration
 
-`iterations/05-white-shell/` — the current responsive, buildless prototype.
-The opening shows only an oversized, centered Ghost with the complete GHOST word centered
-across the broader part of the bottom spike. Five equal-width letter cells center both
-the O and the full title on Ghost's horizontal centerline. The image is larger than the viewport:
-112% of screen height, capped at 116% of screen width, with the outer edges cropped.
-The shell is brighter and desaturated, with the blue eye preserved. Ubuntu Sans ExtraBold
-uses an inverse-color blend across the spike, reading white against the near-black background. The banner appears on scroll; the descriptor, ownership, facts, and provenance
-follow below the first viewport. Sharp edges and restrained glass remain.
+`iterations/06-symbol-reveal/` — the current responsive, buildless prototype.
+The opening spells GHOST with the isolated blue symbol replacing the O. Silver Ubuntu
+Sans Semibold 600 lettering frames the brighter symbol. As the visitor scrolls, the shell
+emerges in front of the title and the lettering recedes. The full Ghost remains briefly
+before the pinned opening releases into the project details. Navigation appears near the
+end of the reveal. There is no automatic playback or scroll interception.
 
-The builder chose Ubuntu Sans for now. The earlier four-font study remains at
-`iterations/03-bold-type/type-comparison.html`. All previous iterations are preserved.
+The builder invited font/color experiments for this composition. Semibold silver is the
+first implementation choice, not a final font decision. Earlier iterations and the
+four-font study in `iterations/03-bold-type/type-comparison.html` are preserved.
 The ten-section engineering draft and validation qualifications remain in place.
 
 ## Preview
@@ -26,7 +25,7 @@ From the project root:
 node Website/preview.mjs
 ```
 
-Open `http://127.0.0.1:4173/iterations/05-white-shell/` for the current prototype, or
+Open `http://127.0.0.1:4173/iterations/06-symbol-reveal/` for the current prototype, or
 `http://127.0.0.1:4173/` for the iteration index. Stop the server with Ctrl+C. Pass a
 different port as the last argument if needed. No package installation or build is required.
 
@@ -37,10 +36,11 @@ view switches, media configuration, and the mobile menu use JavaScript.
 ## Organization
 
 - `index.html` — visual iteration index.
-- `iterations/05-white-shell/` — the current white-shell and title-below-image version.
-- `iterations/05-white-shell/hero.css` — opening composition, scroll-banner presentation, and contrast refinements.
-- `iterations/05-white-shell/assets/` — display copies, Ubuntu fonts/license, and the temporary front image.
-- `iterations/05-white-shell/media.js` — hero, demo, packaging, and rear-shell media configuration.
+- `iterations/06-symbol-reveal/` — the current symbol-to-shell scroll reveal.
+- `iterations/06-symbol-reveal/hero.css` — opening composition, scroll-banner presentation, and contrast refinements.
+- `iterations/06-symbol-reveal/assets/` — display copies, Ubuntu fonts/license, and the temporary front image.
+- `iterations/06-symbol-reveal/media.js` — hero, demo, packaging, and rear-shell media configuration.
+- `iterations/05-white-shell/` — preserved white shell and inverse title across the lower spike.
 - `iterations/04-centered-hero/` — preserved O-to-eye overlay; rejected because the word looked off-center.
 - `iterations/03-bold-type/` — preserved bold-title pass and font comparison.
 - `iterations/02-monochrome-glass/` — preserved monochrome/glass direction before bold/sharp refinements.
@@ -49,7 +49,7 @@ view switches, media configuration, and the mobile menu use JavaScript.
 - `qa/` — local verification artifacts; not served by the preview server.
 
 Make routine fixes within the current version. For a deliberate alternate direction or
-major design revision, create a new numbered sibling such as `06-<description>/`, preserve
+major design revision, create a new numbered sibling such as `07-<description>/`, preserve
 the reviewed previous iteration, and update this README and the index. Do not create
 alternative website files in the project root or original Assets directory.
 
@@ -63,10 +63,13 @@ file into the iteration's `assets/` folder, then update its entry in `media.js`:
 - For the demo, set `src`, optional `poster`, and an optional WebVTT `captions` path.
   A real video player appears only when a video source is supplied.
 - The hero has fallback images, a screen-reader caption, and a visible caption below the
-  opening. Update those too for an accurate no-JavaScript view. Iteration 05 uses two
-  copies of the same image for the neutral white shell and colored eye; `app.js` updates both.
-- Recheck the eye mask and shell color treatment in `hero.css` when replacing the image.
-  The mask is calibrated to `Ghost.webp`; title centering is independent of eye position.
+  opening. Update those too for an accurate no-JavaScript view. Iteration 06 uses two
+  copies of the same image for the emerging neutral shell and isolated symbol; `app.js` updates both.
+- Recheck the symbol mask, eye center, and shell color treatment in `hero.css` when replacing
+  the image. The source eye at 49.6% / 49.5% is aligned with the central title slot.
+- `app.js` maps scrolling through the 220-viewport-percent runway to shell opacity/brightness
+  and title opacity. Reduced-motion preferences and disabled JavaScript use a static full
+  Ghost with a complete GHOST title instead of the pinned reveal.
 
 The cam viewer and PCB viewer use the three pose / three view entries in `app.js`.
 
@@ -91,10 +94,11 @@ Font sources: [Google Fonts](https://fonts.google.com/specimen/Ubuntu+Sans) and
 [Canonical license](https://github.com/canonical/Ubuntu-Sans-fonts/blob/main/LICENCE.txt).
 
 All prose is draft copy based on `Knowledge/Sections/` and current validation status.
-All current versions preserve the front image's transparency. Iteration 05 uses CSS
-brightness/desaturation and a masked eye layer, with one centered HTML H1 crossing the bottom spike.
-The white title uses `mix-blend-mode: difference` to invert its backdrop; over the current
-near-black background it appears white. The source image is unchanged. Its use does not complete `HERO-01`. Glass surfaces have an opaque
+All current versions preserve the front image's transparency. Iteration 06 uses CSS
+brightness/desaturation and a masked symbol layer. The accessible H1 is named GHOST while
+the visual center slot lets the blue symbol serve as the O. The shell is layered above
+the silver letters and revealed by scroll progress. The source image is unchanged and
+its use does not complete `HERO-01`. Glass surfaces have an opaque
 fallback for unsupported blur and reduced-transparency preferences.
 The CAD cam illustration is not evidence of an installed, validated revision. The routine
 overview is a programmed sequence, not captured test data. Firmware and CAD download
