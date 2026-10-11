@@ -1,0 +1,128 @@
+(() => {
+  'use strict';
+  const nav = document.querySelector('#primary-nav');
+  const menu = document.querySelector('.menu-toggle');
+  menu.hidden = false;
+  nav.classList.add('js-nav');
+  const closeMenu = () => {
+    nav.classList.remove('is-open');
+    menu.setAttribute('aria-expanded', 'false');
+  };
+  menu.addEventListener('click', () => {
+    const open = menu.getAttribute('aria-expanded') !== 'true';
+    menu.setAttribute('aria-expanded', String(open));
+    nav.classList.toggle('is-open', open);
+  });
+  nav.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+  const wideScreen = matchMedia('(min-width: 601px)');
+  wideScreen.addEventListener('change', closeMenu);
+
+  const navLinks = [...nav.querySelectorAll('a')];
+  const sections = [...document.querySelectorAll('main section[id]')];
+  let scheduled = false;
+  function updateNavigation() {
+    let current = sections[0].id;
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= 180) current = section.id;
+    }
+    const groups = { architecture: 'brief', integration: 'control', future: 'results' };
+    current = groups[current] || current;
+    for (const link of navLinks) {
+      if (link.hash === `#${current}`) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    }
+    scheduled = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!scheduled) { requestAnimationFrame(updateNavigation); scheduled = true; }
+  }, { passive: true });
+  updateNavigation();
+
+  const poses = {
+    closed: { src: 'assets/mechanism-closed.png', alt: 'CAD source frame showing the integrated spike and follower in the closed pose, above the orange cam and servo.' },
+    mid: { src: 'assets/mechanism-mid.png', alt: 'CAD source frame showing the spike and integrated follower at intermediate travel, with the blue torsion spring at the hinge.' },
+    open: { src: 'assets/mechanism-open.png', alt: 'CAD source frame showing the spike and integrated follower in the open pose on the selected equation-defined cam.' }
+  };
+  const mechanismImage = document.querySelector('#mechanism-image');
+  document.querySelectorAll('[data-pose]').forEach(button => button.addEventListener('click', () => {
+    Object.assign(mechanismImage, poses[button.dataset.pose]);
+    document.querySelectorAll('[data-pose]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  }));
+
+  const boards = {
+    front: { src: 'assets/main-pcb-v2-front.png', label: 'MAIN PCB / REVISION 2 / FRONT', alt: 'KiCad front render of the Revision 2 main PCB with four edge cutouts, central wiring opening, servo headers, and ESP32-S3 module.', caption: 'The 93 mm profile leaves clearance for four spike mechanisms and a central wire route.' },
+    back: { src: 'assets/main-pcb-v2-back.png', label: 'MAIN PCB / REVISION 2 / BACK', alt: 'KiCad back render of the Revision 2 main PCB, showing rear-side routing and components around its mechanism-clearance cutouts.', caption: 'Rear-side routing and components help the four-layer board stay within the available footprint.' },
+    revision: { src: 'assets/main-pcb-v1-front.png', label: 'MAIN PCB / REVISION 1 / FRONT', alt: 'KiCad render of the preliminary Revision 1 main PCB. Any displayed LCD cable is representative geometry, not verified dimensions.', caption: 'Revision 1 verified core circuits before the final outline and USB-C input. LCD cable geometry is representative.' }
+  };
+  document.querySelectorAll('[data-board]').forEach(button => button.addEventListener('click', () => {
+    const board = boards[button.dataset.board];
+    Object.assign(document.querySelector('#pcb-image'), { src: board.src, alt: board.alt });
+    document.querySelector('#pcb-label').textContent = board.label;
+    document.querySelector('#pcb-caption').textContent = board.caption;
+    const zoom = document.querySelector('#pcb-zoom');
+    zoom.href = board.src;
+    zoom.dataset.caption = `${board.label} — ${board.caption}`;
+    document.querySelectorAll('[data-board]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  }));
+
+  for (const [key, media] of Object.entries(window.GHOST_MEDIA || {})) {
+    const figure = document.querySelector(`[data-media="${key}"]`);
+    if (!figure) continue;
+    if (media.caption) figure.querySelector('figcaption').textContent = media.caption;
+    if (key === 'demo') {
+      if (!media.src) continue;
+      const video = document.createElement('video');
+      video.className = 'demo-video';
+      video.src = media.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = 'metadata';
+      video.setAttribute('aria-label', 'Ghost integrated performance demonstration');
+      if (media.poster) video.poster = media.poster;
+      if (media.captions) {
+        const track = document.createElement('track');
+        Object.assign(track, { kind: 'captions', src: media.captions, srclang: 'en', label: 'English', default: true });
+        video.append(track);
+      }
+      const fallback = document.createElement('a');
+      fallback.href = media.src;
+      fallback.textContent = 'Open demonstration video';
+      video.append(fallback);
+      figure.querySelector('[data-demo-stage]').replaceWith(video);
+    } else if (media.src) {
+      let img = figure.querySelector('img');
+      if (!img) {
+        img = document.createElement('img');
+        img.loading = 'lazy';
+        figure.querySelector('[data-media-stage]').replaceWith(img);
+      }
+      img.src = media.src;
+      img.alt = media.alt || '';
+      img.style.objectFit = media.fit || 'contain';
+      img.style.objectPosition = media.position || '50% 50%';
+      if (!media.placeholder) figure.querySelector('.placeholder-tag')?.remove();
+    }
+  }
+
+  const dialog = document.querySelector('.image-dialog');
+  document.querySelectorAll('[data-zoom]').forEach(link => link.addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || typeof dialog.showModal !== 'function') return;
+    event.preventDefault();
+    const caption = link.dataset.caption || 'Project figure';
+    const img = document.querySelector('#dialog-image');
+    img.src = link.href;
+    img.alt = caption;
+    document.querySelector('#dialog-caption').textContent = caption;
+    dialog.dataset.light = String(link.href.endsWith('.svg'));
+    dialog.showModal();
+    document.body.classList.add('dialog-open');
+  }));
+  document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', () => document.body.classList.remove('dialog-open'));
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+  });
+})();
