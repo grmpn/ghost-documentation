@@ -5,14 +5,15 @@ Ghost project remains the source of truth for facts, engineering notes, and orig
 
 ## Current iteration
 
-`iterations/03-bold-type/` — the current responsive, buildless prototype.
-It uses the supplied temporary front image, an oversized left-side Ghost fading behind
-right-side title copy, black/gray surfaces, light-blue accents, and restrained glass.
-The GHOST title is now Ubuntu Sans ExtraBold 800, with sharp square corners throughout.
-Compare four title families in `iterations/03-bold-type/type-comparison.html`; the inline
-source is `type-comparison.inline.html`. The final font family remains open.
-The ten-section draft is shorter; engineering visuals and validation qualifications remain.
-Iterations `01-foundation` and `02-monochrome-glass` preserve the previous directions.
+`iterations/04-centered-hero/` — the current responsive, buildless prototype.
+The opening shows only a centered Ghost and GHOST title, with the O aligned over the blue
+eye. Ubuntu Sans ExtraBold, a dimmer shell, and near-black surroundings create the focal
+contrast. The banner appears on scroll; the descriptor, ownership, facts, and provenance
+follow below the first viewport. Sharp edges and restrained glass remain.
+
+The builder chose Ubuntu Sans for now. The earlier four-font study remains at
+`iterations/03-bold-type/type-comparison.html`. All previous iterations are preserved.
+The ten-section engineering draft and validation qualifications remain in place.
 
 ## Preview
 
@@ -22,7 +23,7 @@ From the project root:
 node Website/preview.mjs
 ```
 
-Open `http://127.0.0.1:4173/iterations/03-bold-type/` for the current prototype, or
+Open `http://127.0.0.1:4173/iterations/04-centered-hero/` for the current prototype, or
 `http://127.0.0.1:4173/` for the iteration index. Stop the server with Ctrl+C. Pass a
 different port as the last argument if needed. No package installation or build is required.
 
@@ -33,16 +34,18 @@ view switches, media configuration, and the mobile menu use JavaScript.
 ## Organization
 
 - `index.html` — visual iteration index.
-- `iterations/03-bold-type/` — the current version and its font comparison.
-- `iterations/03-bold-type/assets/` — display copies, fonts/licenses, and the temporary front image.
-- `iterations/03-bold-type/media.js` — hero, demo, packaging, and rear-shell media configuration.
+- `iterations/04-centered-hero/` — the current centered hero version.
+- `iterations/04-centered-hero/hero.css` — opening composition, scroll-banner presentation, and contrast refinements.
+- `iterations/04-centered-hero/assets/` — display copies, Ubuntu fonts/license, and the temporary front image.
+- `iterations/04-centered-hero/media.js` — hero, demo, packaging, and rear-shell media configuration.
+- `iterations/03-bold-type/` — preserved bold-title pass and font comparison.
 - `iterations/02-monochrome-glass/` — preserved monochrome/glass direction before bold/sharp refinements.
 - `iterations/01-foundation/` — the preserved first direction, including its illustrative SVG.
 - `preview.mjs` — localhost-only static server, confined to this Website directory.
 - `qa/` — local verification artifacts; not served by the preview server.
 
 Make routine fixes within the current version. For a deliberate alternate direction or
-major design revision, create a new numbered sibling such as `04-<description>/`, preserve
+major design revision, create a new numbered sibling such as `05-<description>/`, preserve
 the reviewed previous iteration, and update this README and the index. Do not create
 alternative website files in the project root or original Assets directory.
 
@@ -55,7 +58,11 @@ file into the iteration's `assets/` folder, then update its entry in `media.js`:
 - Set `fit` (`contain` or `cover`) and `position` for image composition.
 - For the demo, set `src`, optional `poster`, and an optional WebVTT `captions` path.
   A real video player appears only when a video source is supplied.
-- The hero has an HTML fallback image/caption. Update those too for an accurate no-JavaScript view.
+- The hero has fallback images, a screen-reader caption, and a visible caption below the
+  opening. Update those too for an accurate no-JavaScript view. Iteration 04 uses two
+  copies of the same image for the darker shell and brighter eye; `app.js` updates both.
+- Recheck eye position and title alignment in `hero.css` when replacing the hero image.
+  The current centering and eye mask are calibrated to `Ghost.webp`.
 
 The cam viewer and PCB viewer use the three pose / three view entries in `app.js`.
 
@@ -80,8 +87,9 @@ Font sources: [Google Fonts](https://fonts.google.com/specimen/Ubuntu+Sans) and
 [Canonical license](https://github.com/canonical/Ubuntu-Sans-fonts/blob/main/LICENCE.txt).
 
 All prose is draft copy based on `Knowledge/Sections/` and current validation status.
-Iterations 02 and 03 preserve the front image's transparency; CSS applies grayscale, dimming,
-and a rightward fade. Its use does not complete `HERO-01`. Glass surfaces have an opaque
+All current versions preserve the front image's transparency. Iteration 04 uses CSS dimming
+and a masked eye layer, with centered Ubuntu SVG text inside an accessible H1. The source
+image is unchanged. Its use does not complete `HERO-01`. Glass surfaces have an opaque
 fallback for unsupported blur and reduced-transparency preferences.
 The CAD cam illustration is not evidence of an installed, validated revision. The routine
 overview is a programmed sequence, not captured test data. Firmware and CAD download

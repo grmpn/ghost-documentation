@@ -1,6 +1,7 @@
 # Iteration 01 validation — October 10, 2026
 
-For the current pass, see [iteration 03 validation](03-review.md), with
+For the current pass, see [iteration 04 validation](04-review.md), with
+[iteration 03 validation](03-review.md) and
 [iteration 02 validation](02-review.md) preserved. The record below
 is preserved for comparison.
 

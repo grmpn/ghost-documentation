@@ -7,7 +7,7 @@ import re
 import sys
 
 website = Path(__file__).resolve().parents[1]
-iteration = sys.argv[1] if len(sys.argv) > 1 else '03-bold-type'
+iteration = sys.argv[1] if len(sys.argv) > 1 else '04-centered-hero'
 root = website / 'iterations' / iteration
 
 class Page(HTMLParser):
@@ -33,15 +33,16 @@ page.feed((root / 'index.html').read_text(encoding='utf-8'))
 assert len(page.ids) == len(set(page.ids)), 'Duplicate IDs'
 assert page.sections == 10, 'Expected all ten sections'
 assert len(page.headings) == 1, 'Expected a single H1'
-assert all(i.get('alt') for i in page.images), 'Missing image alternative text'
+assert all(i.get('alt') or (i.get('aria-hidden') == 'true' and i.get('alt') == '') for i in page.images), 'Missing image alternative text'
 for ref in page.refs:
     if ref.startswith('#'):
         assert ref[1:] in page.ids, f'Broken anchor: {ref}'
     elif not re.match(r'^[a-z]+:', ref):
         assert (root / ref).is_file(), f'Missing file: {ref}'
 
-for ref in re.findall(r"url\(['\"]?([^)'\"]+)", (root / 'styles.css').read_text()):
-    assert (root / ref).is_file(), f'Missing CSS resource: {ref}'
+for css in root.glob('*.css'):
+    for ref in re.findall(r"url\(['\"]?([^)'\"]+)", css.read_text()):
+        assert (root / ref).is_file(), f'Missing CSS resource in {css.name}: {ref}'
 
 served = []
 for path in root.rglob('*'):
