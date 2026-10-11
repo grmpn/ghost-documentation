@@ -7,7 +7,7 @@ import re
 import sys
 
 website = Path(__file__).resolve().parents[1]
-iteration = sys.argv[1] if len(sys.argv) > 1 else '02-monochrome-glass'
+iteration = sys.argv[1] if len(sys.argv) > 1 else '03-bold-type'
 root = website / 'iterations' / iteration
 
 class Page(HTMLParser):
