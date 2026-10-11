@@ -4,9 +4,11 @@ from pathlib import Path
 from urllib.request import urlopen
 import json
 import re
+import sys
 
 website = Path(__file__).resolve().parents[1]
-root = website / 'iterations' / '01-foundation'
+iteration = sys.argv[1] if len(sys.argv) > 1 else '02-monochrome-glass'
+root = website / 'iterations' / iteration
 
 class Page(HTMLParser):
     def __init__(self):
@@ -50,6 +52,6 @@ for path in root.rglob('*'):
             assert len(response.read()) == path.stat().st_size, f'Incomplete response: {path}'
         served.append(path.relative_to(root).as_posix())
 
-result = {'sections': page.sections, 'unique_ids': len(page.ids), 'html_images_with_alt': len(page.images), 'served_files': served, 'status': 'passed'}
-(website / 'qa' / 'resource-check.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+result = {'iteration': iteration, 'sections': page.sections, 'unique_ids': len(page.ids), 'html_images_with_alt': len(page.images), 'served_files': served, 'status': 'passed'}
+(website / 'qa' / f'{iteration}-resource-check.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
 print(json.dumps(result, indent=2))

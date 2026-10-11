@@ -1,5 +1,8 @@
 # Iteration 01 validation — October 10, 2026
 
+For the current pass, see [iteration 02 validation](02-review.md). The record below
+is preserved for comparison.
+
 - Node syntax checks passed for the preview server, media configuration, and interaction script.
 - `check-site.py` verified ten sections, unique IDs, one H1, alternative text, local
   anchors, CSS font resources, and complete HTTP responses for all 16 served files.
