@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Ghost, a compact animatronic system. Mechanical design, custom electronics, and coordinated motion in a constrained shell.">
+  <meta name="theme-color" content="#070708">
+  <title>Ghost — A Compact Animatronic System</title>
+  <script>document.documentElement.classList.toggle('hero-motion', !matchMedia('(prefers-reduced-motion: reduce)').matches);</script>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/ubuntu-sans-regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/ubuntu-sans-semibold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/rajdhani-600-title.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/ghost-front.webp" as="image">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="hero.css">
+  <link rel="stylesheet" href="prism.css">
+  <script src="media.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#introduction">Skip to project details</a>
+  <header class="site-header glass" inert aria-hidden="true">
+    <a class="wordmark" href="#hero" aria-label="Ghost, back to top"><span class="brand-symbol" aria-hidden="true"></span>GHOST</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" hidden>Sections <span aria-hidden="true">+</span></button>
+    <nav id="primary-nav" aria-label="Main navigation">
+      <a href="#brief">Overview</a>
+      <a href="#mechanical">Mechanics</a>
+      <a href="#electronics">Electronics</a>
+      <a href="#control">Control</a>
+      <a href="#results">Results</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero-runway">
+      <div class="hero-stage">
+        <figure class="hero-art" data-media="hero">
+          <img class="hero-shell" src="assets/ghost-front.webp" width="1080" height="1080" alt="User-supplied temporary front reference image of the Destiny Ghost. Final build photography is pending.">
+          <img class="hero-eye" src="assets/ghost-front.webp" width="1080" height="1080" alt="" aria-hidden="true">
+          <figcaption class="sr-only">Temporary reference image · final build photography pending.</figcaption>
+        </figure>
+        <h1 id="hero-title" class="hero-title" aria-label="GHOST"><span aria-hidden="true">G</span><span aria-hidden="true">H</span><span class="hero-symbol-slot" aria-hidden="true"></span><span aria-hidden="true">S</span><span aria-hidden="true">T</span></h1>
+      </div>
+      </div>
+      <div class="hero-details wrap" id="introduction" tabindex="-1">
+        <div class="intro-heading">
+          <div><p class="eyebrow">PERSONAL ENGINEERING / 2026</p><h2>A compact<br>animatronic system.</h2></div>
+          <div class="intro-copy"><p>Mechanical expression, custom electronics, and coordinated motion inside a familiar form.</p><p class="ownership"><span>SOLO DESIGN &amp; BUILD</span>Mechanics · PCB design · Firmware</p><p class="project-status"><span aria-hidden="true"></span>Final hardware validation</p></div>
+        </div>
+        <dl class="hero-specs glass">
+          <div><dt>ACTUATION</dt><dd>5 <span>degrees of freedom</span></dd></div>
+          <div><dt>OVERALL SIZE</dt><dd>153 × 139 × 139 <span>mm, rounded</span></dd></div>
+          <div><dt>INTERNAL ENVELOPE</dt><dd>≈ 94 <span>mm diameter</span></dd></div>
+          <div><dt>CONTROLLER</dt><dd>ESP32-S3 <span>two custom PCBs</span></dd></div>
+        </dl>
+        <p class="hero-media-note" data-hero-caption>Temporary reference image · final build photography pending.</p>
+        <noscript><nav class="fallback-nav" aria-label="Project sections"><a href="#brief">Overview</a><a href="#mechanical">Mechanics</a><a href="#electronics">Electronics</a><a href="#control">Control</a><a href="#results">Results</a></nav></noscript>
+      </div>
+    </section>
+
+    <section id="demo" class="section wrap" aria-labelledby="demo-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / IN MOTION</p><h2 id="demo-title">From mechanism to character.</h2></div><span class="section-aside">ARTICULATION / ROTATION / LIGHT</span></div>
+      <figure class="demo-figure glass" data-media="demo">
+        <div class="demo-stage" data-demo-stage>
+          <span class="stage-label">PERFORMANCE CAPTURE</span>
+          <div class="demo-center"><span class="aperture" aria-hidden="true"></span><p>Final video pending</p></div>
+          <div class="stage-bottom"><span>30–60 SEC</span><span>THREE-QUARTER VIEW</span></div>
+        </div>
+        <figcaption>Capture follows the final shell revision and supervised routine validation.</figcaption>
+      </figure>
+    </section>
+
+    <section id="brief" class="section wrap" aria-labelledby="brief-title">
+      <div class="section-heading"><div><p class="eyebrow">02 / THE BRIEF</p><h2 id="brief-title">Keep the form.<br>Make it move.</h2></div></div>
+      <div class="brief-grid">
+        <div class="prose"><p>Inspired by the Ghost from <em>Destiny</em>, I designed four articulated spikes, a rotating rear shell, and expressive lighting around a 100 mm main-sphere limit.</p><p>Preserving its proportions drove the design. Additional motion axes were dropped when their mechanisms competed with the servos, boards, and wiring for space.</p></div>
+        <dl class="spec-list"><div><dt>Ownership</dt><dd>CAD, PCBs, firmware, assembly &amp; testing</dd></div><div><dt>Fabrication</dt><dd>White PLA / Bambu Lab P1S</dd></div><div><dt>Electronics</dt><dd>KiCad / custom FR-4 boards</dd></div><div><dt>Scope</dt><dd>Physical expression; no assistant features</dd></div></dl>
+      </div>
+    </section>
+
+    <section id="architecture" class="section wrap" aria-labelledby="architecture-title">
+      <div class="section-heading"><div><p class="eyebrow">03 / ARCHITECTURE</p><h2 id="architecture-title">Separate power.<br>Shared control.</h2></div><p>Two 5 V inputs supply control and actuation. All outputs share the main board’s ground reference.</p></div>
+      <figure class="architecture-figure glass">
+        <div class="figure-topline"><span>POWER &amp; SIGNAL FLOW</span><a class="text-link" href="assets/system-architecture.svg" data-zoom data-caption="System architecture — separate 5 V inputs, shared ground, five servo outputs, and one LED control output.">Expand diagram <span aria-hidden="true">↗</span></a></div>
+        <a class="diagram-link" href="assets/system-architecture.svg" data-zoom data-caption="System architecture — separate 5 V inputs, shared ground, five servo outputs, and one LED control output."><img src="assets/system-architecture.svg" alt="Micro-USB powers the regulated ESP32-S3 domain. Power-only USB-C supplies the servos and LED board. All components share ground, with six independent PWM outputs." loading="lazy"></a>
+        <figcaption>Micro-USB → controller &nbsp; / &nbsp; USB-C → servos + LEDs &nbsp; / &nbsp; Six PWM outputs</figcaption>
+      </figure>
+    </section>
+
+    <section id="mechanical" class="section wrap" aria-labelledby="mechanical-title">
+      <div class="section-heading"><div><p class="eyebrow">04 / MECHANICS</p><h2 id="mechanical-title">Four spikes.<br>One repeated principle.</h2></div></div>
+      <div class="mechanism-layout">
+        <figure class="mechanism-figure glass">
+          <div class="figure-topline"><span>CAM / FOLLOWER / RETURN SPRING</span><span>CAD</span></div>
+          <img id="mechanism-image" src="assets/mechanism-closed.png" width="2000" height="2000" alt="CAD source frame of the integrated spike and follower in the closed pose above the orange cam and servo." loading="lazy">
+          <div class="segmented" role="group" aria-label="Mechanism CAD pose"><button type="button" data-pose="closed" aria-pressed="true">Closed</button><button type="button" data-pose="mid" aria-pressed="false">Mid travel</button><button type="button" data-pose="open" aria-pressed="false">Open</button></div>
+          <figcaption>Selected cam revision in CAD. Installation and measured output travel remain pending.</figcaption>
+        </figure>
+        <div class="mechanism-copy prose"><h3>Rotation becomes articulation.</h3><p>The servo-driven cam pushes a follower integrated into the spike. As the cam radius changes, the spike pivots around its hinge.</p><p>A preloaded torsion spring keeps the follower against the cam, allowing all four spikes to return regardless of orientation.</p><div class="mechanism-key"><span><i class="key-cam"></i> Cam</span><span><i class="key-spring"></i> Spring</span><span><i class="key-spike"></i> Spike / follower</span></div><p class="technical-note">28.62–41 mm cam diameter across a half-turn.<br>CAD geometry, not measured spike travel.</p></div>
+      </div>
+      <div class="paired-details">
+        <article><figure class="placeholder-figure glass" data-media="packaging"><div class="figure-topline"><span>INTERNAL PACKAGING</span><span class="placeholder-tag">PENDING</span></div><div class="packaging-study" data-media-stage aria-label="Abstract placeholder for an exploded CAD assembly"><span class="assembly-layer layer-one"></span><span class="assembly-layer layer-two"></span><span class="assembly-layer layer-three"></span><p>Exploded assembly</p></div><figcaption>Final CAD view pending.</figcaption></figure><h3>Designed around the axes.</h3><p>The servo housing locates the mechanisms. A shared central opening routes wires forward through the main PCB.</p></article>
+        <article><figure class="placeholder-figure glass" data-media="rear"><div class="figure-topline"><span>REAR-SHELL ROTATION</span><span class="placeholder-tag">PENDING</span></div><div class="rear-study" data-media-stage aria-label="Placeholder for left, home, and right rear-shell photographs"><div><span>↶</span><small>LEFT</small></div><div><span>◎</span><small>HOME</small></div><div><span>↷</span><small>RIGHT</small></div></div><figcaption>Final shell validation and capture pending.</figcaption></figure><h3>Balance support and friction.</h3><p>The rear servo supports and rotates the shell. Light contact with the front shell restrains wobble; excess preload adds drag.</p></article>
+      </div>
+    </section>
+
+    <section id="electronics" class="section wrap" aria-labelledby="electronics-title">
+      <div class="section-heading"><div><p class="eyebrow">05 / ELECTRONICS</p><h2 id="electronics-title">Boards shaped<br>by the mechanisms.</h2></div></div>
+      <div class="electronics-layout">
+        <figure class="pcb-figure glass"><div class="figure-topline"><span id="pcb-label">MAIN PCB / REVISION 2 / FRONT</span><a id="pcb-zoom" class="text-link" href="assets/main-pcb-v2-front.png" data-zoom data-caption="Main PCB Revision 2, front — existing KiCad source render.">Enlarge <span aria-hidden="true">↗</span></a></div><img id="pcb-image" src="assets/main-pcb-v2-front.png" width="2362" height="1377" alt="Revision 2 main PCB with four edge cutouts, a central wiring opening, servo headers, and an ESP32-S3 module." loading="lazy"><div class="segmented" role="group" aria-label="Main PCB view"><button type="button" data-board="front" aria-pressed="true">Rev 2 · Front</button><button type="button" data-board="back" aria-pressed="false">Rev 2 · Back</button><button type="button" data-board="revision" aria-pressed="false">Rev 1</button></div><figcaption id="pcb-caption">93 mm profile, four mechanism cutouts, one central wire route.</figcaption></figure>
+        <div class="board-notes"><div><span class="note-index">01</span><h3>Clearance first.</h3><p>The outline clears the cams while keeping the USB connectors accessible beneath the shell.</p></div><div><span class="note-index">02</span><h3>Four layers.</h3><p>Components and routing occupy both faces, supported by internal 5 V and ground fills.</p></div><div><span class="note-index">03</span><h3>Integrated bring-up.</h3><p>All five servos and the LED board operated together. Total system current remains unmeasured.</p></div></div>
+      </div>
+      <div class="led-feature glass"><figure><a href="assets/led-pcb-front.png" data-zoom data-caption="46 × 46 mm front-light PCB — 20 LEDs with individual resistors and a low-side MOSFET."><img src="assets/led-pcb-front.png" alt="KiCad render of the 20-LED front-light PCB." width="2362" height="1377" loading="lazy"></a></figure><div><p class="eyebrow">46 × 46 MM / 20 LEDS</p><h3>Expression through light.</h3><p>Individual resistors limit LED current. A single PWM-controlled MOSFET produces breathing and motion-synchronized brightness.</p></div></div>
+    </section>
+
+    <section id="control" class="section wrap" aria-labelledby="control-title">
+      <div class="section-heading"><div><p class="eyebrow">06 / CONTROL</p><h2 id="control-title">Choreography,<br>one channel at a time.</h2></div><p>Direct LEDC outputs drive five servos at 50 Hz and lighting at 5 kHz. Interpolation softens transitions; keyframes coordinate the performance.</p></div>
+      <figure class="routine-figure glass"><div class="figure-topline"><span>PROGRAMMED SEQUENCE / ≈ 55.6 S + IDLE</span><span class="pending-text">Final run pending</span></div><ol class="routine-phases"><li><span>01</span><strong>Home</strong><small>6.0 s</small><p>Park &amp; fade</p></li><li><span>02</span><strong>Breathe</strong><small>8.0 s</small><p>Light</p></li><li><span>03</span><strong>Sync</strong><small>8.0 s</small><p>Four spikes</p></li><li><span>04</span><strong>Ripple</strong><small>≈ 5.3 s</small><p>N → E → S → W</p></li><li><span>05</span><strong>Rotate</strong><small>12.0 s</small><p>Rear shell</p></li><li><span>06</span><strong>Talk</strong><small>≈ 9.3 s</small><p>Paired motion</p></li><li><span>07</span><strong>Finale</strong><small>7.0 s</small><p>All features</p></li><li><span>08</span><strong>Idle</strong><small>∞</small><p>Light</p></li></ol><figcaption>Open-loop demonstration with mechanically indexed home positions and no sensor feedback. Programmed timings; phase widths are not time-scaled.</figcaption></figure>
+    </section>
+
+    <section id="integration" class="section wrap" aria-labelledby="integration-title">
+      <div class="section-heading"><div><p class="eyebrow">07 / REVISIONS</p><h2 id="integration-title">What testing changed.</h2></div></div>
+      <div class="story-list">
+        <article class="story"><span class="story-number">01</span><h3>A shared envelope.</h3><div><p>Cams, servo axes, and the PCB competed for space. Iterating the housing and board outline together produced a stack that fits the original shell.</p></div></article>
+        <article class="story"><span class="story-number">02</span><h3>Gravity was not enough.</h3><div><p>The unsprung lower spike stayed open. Preloaded torsion springs made return independent of orientation.</p></div></article>
+        <article class="story"><span class="story-number">03</span><h3>Light replaced the LCD.</h3><div><p>The circular display never produced a usable image. A custom LED face preserved expression with a simpler interface—and became a stronger visual result.</p></div></article>
+      </div>
+    </section>
+
+    <section id="results" class="section wrap" aria-labelledby="results-title">
+      <div class="section-heading"><div><p class="eyebrow">08 / RESULTS</p><h2 id="results-title">Built. Integrated.<br>In final validation.</h2></div></div>
+      <div class="results-grid"><div class="scorecard glass"><div><span>Packaging &amp; scale</span><strong>Confirmed</strong><p>The full stack fits the intended envelope.</p></div><div><span>Motion &amp; lighting</span><strong>Observed</strong><p>Five actuators and the LED board operate together.</p></div><div><span>Repeatability</span><strong>Observed</strong><p>Five-plus consecutive tuning runs; not an endurance test.</p></div><div><span>Latest routine &amp; rear shell</span><strong class="pending-text">Pending</strong><p>Final geometry and sequence require a supervised run.</p></div></div><div class="reflection prose"><p class="eyebrow">THE MAIN LESSON</p><h3>Design the interfaces<br>with the parts.</h3><p>Actuator axes, board outlines, wire paths, and assembly access shaped the system together. Settling those interfaces early matters more than optimizing each part in isolation.</p><p class="technical-note">Final mass, usable interior volume, and measured spike travel remain open.</p></div></div>
+    </section>
+
+    <section id="future" class="section wrap" aria-labelledby="future-title">
+      <div class="section-heading"><div><p class="eyebrow">09 / NEXT REFINEMENTS</p><h2 id="future-title">Refine what works.</h2></div></div>
+      <div class="future-list"><article><span>MECHANICAL</span><h3>Broader follower contact.</h3><p>A focused geometry refinement within the existing clearances.</p></article><article><span>ELECTRONICS</span><h3>Better serviceability.</h3><p>Purposeful cable strain relief and a review of startup-sensitive GPIO choices.</p></article><article><span>SOFTWARE</span><h3>Reusable character actions.</h3><p>Named behaviors built from the existing motion and lighting helpers.</p></article></div>
+    </section>
+  </main>
+  <footer class="site-footer wrap"><div><a class="wordmark" href="#hero">GHOST</a><p>Personal engineering project · Inspired by <em>Destiny</em></p></div><div><span class="prototype-label">ITERATION 07 / VIOLET PRISM</span><p>Draft content · Final media pending</p><a href="#hero" class="text-link">Back to top ↑</a></div></footer>
+  <dialog class="image-dialog glass" aria-label="Expanded project figure"><div class="dialog-toolbar"><p id="dialog-caption"></p><button type="button" class="dialog-close" aria-label="Close expanded figure">Close ×</button></div><img id="dialog-image" alt="Expanded project figure"></dialog>
+</body>
+</html>

@@ -1,6 +1,8 @@
 # Iteration 01 validation — October 10, 2026
 
-For the current pass, see [iteration 06 validation](06-review.md), with
+For the current pass, see [iteration 08 validation](08-review.md), with
+[iteration 07 validation](07-review.md),
+[iteration 06 validation](06-review.md),
 [iteration 05 validation](05-review.md),
 [iteration 04 validation](04-review.md),
 [iteration 03 validation](03-review.md) and

@@ -33,5 +33,5 @@ const server = createServer(async (req, res) => {
     }
   } catch { res.writeHead(404).end('Not found'); }
 });
-server.listen(port, '127.0.0.1', () => console.log(`Local: http://127.0.0.1:${port}/iterations/06-symbol-reveal/`));
+server.listen(port, '127.0.0.1', () => console.log(`Local: http://127.0.0.1:${port}/iterations/08-vector-reveal/`));
 server.on('error', error => { console.error(error.message); process.exitCode = 1; });

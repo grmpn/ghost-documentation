@@ -1,4 +1,5 @@
 # Generated local preview captures and resource-check output.
 qa/*.png
+qa/*.jpg
 qa/resource-check.json
 qa/*-resource-check.json
