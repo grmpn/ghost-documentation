@@ -119,9 +119,23 @@
 
     <section id="electronics" class="section wrap" aria-labelledby="electronics-title">
       <div class="section-heading"><div><p class="eyebrow">05 / ELECTRONICS</p><h2 id="electronics-title">Boards shaped<br>by the mechanisms.</h2></div></div>
-      <div class="electronics-layout">
-        <figure class="pcb-figure glass"><div class="figure-topline"><span id="pcb-label">MAIN PCB / REVISION 2 / FRONT</span><a id="pcb-zoom" class="text-link" href="assets/main-pcb-v2-front.png" data-zoom data-caption="Main PCB Revision 2, front — existing KiCad source render.">Enlarge <span aria-hidden="true">↗</span></a></div><img id="pcb-image" src="assets/main-pcb-v2-front.png" width="2362" height="1377" alt="Revision 2 main PCB with four edge cutouts, a central wiring opening, servo headers, and an ESP32-S3 module." loading="lazy"><div class="segmented" role="group" aria-label="Main PCB view"><button type="button" data-board="front" aria-pressed="true">Rev 2 · Front</button><button type="button" data-board="back" aria-pressed="false">Rev 2 · Back</button><button type="button" data-board="revision" aria-pressed="false">Rev 1</button></div><figcaption id="pcb-caption">93 mm profile, four mechanism cutouts, one central wire route.</figcaption></figure>
-        <div class="board-notes"><div><span class="note-index">01</span><h3>Clearance first.</h3><p>The outline clears the cams while keeping the USB connectors accessible beneath the shell.</p></div><div><span class="note-index">02</span><h3>Four layers.</h3><p>Components and routing occupy both faces, supported by internal 5 V and ground fills.</p></div><div><span class="note-index">03</span><h3>Integrated bring-up.</h3><p>All five servos and the LED board operated together. Total system current remains unmeasured.</p></div></div>
+      <div class="electronics-layout pcb-comparison">
+        <figure class="pcb-figure pcb-revision-one glass">
+          <div class="figure-topline"><span>REVISION 1</span><a class="text-link" href="assets/main-pcb-v1-front.png" data-zoom data-caption="Main PCB Revision 1 — preliminary circuit-validation board. LCD cable geometry is representative.">Enlarge <span aria-hidden="true">↗</span></a></div>
+          <img id="pcb-v1-image" src="assets/main-pcb-v1-front.png" width="2362" height="1377" alt="KiCad render of the preliminary Revision 1 main PCB. LCD cable geometry is representative, not verified dimensions." loading="lazy">
+          <figcaption>Preliminary circuit validation.<br>LCD cable geometry is representative.</figcaption>
+        </figure>
+        <div class="board-notes" id="board-details">
+          <div><h3>Clearance first.</h3><p>The final outline clears the cams while keeping the USB connectors accessible beneath the shell.</p></div>
+          <div><h3>Four layers.</h3><p>Components and routing occupy both faces, supported by internal 5 V and ground fills.</p></div>
+          <div><h3>Integrated bring-up.</h3><p>All five servos and the LED board operated together. Total system current remains unmeasured.</p></div>
+        </div>
+        <figure class="pcb-figure pcb-revision-two glass">
+          <div class="figure-topline"><span id="pcb-label">REVISION 2 / FRONT</span><a id="pcb-zoom" class="text-link" href="assets/main-pcb-v2-front.png" data-zoom data-caption="Main PCB Revision 2, front — existing KiCad source render.">Enlarge <span aria-hidden="true">↗</span></a></div>
+          <img id="pcb-image" src="assets/main-pcb-v2-front.png" width="2362" height="1377" alt="Revision 2 main PCB with four edge cutouts, a central wiring opening, servo headers, and an ESP32-S3 module." loading="lazy">
+          <div class="segmented" role="group" aria-label="Revision 2 PCB view"><button type="button" data-board="front" aria-pressed="true">Front</button><button type="button" data-board="back" aria-pressed="false">Back</button></div>
+          <figcaption id="pcb-caption">93 mm profile, four mechanism cutouts, one central wire route.</figcaption>
+        </figure>
       </div>
       <div class="led-feature glass"><figure><a href="assets/led-pcb-front.png" data-zoom data-caption="46 × 46 mm front-light PCB — 20 LEDs with individual resistors and a low-side MOSFET."><img src="assets/led-pcb-front.png" alt="KiCad render of the 20-LED front-light PCB." width="2362" height="1377" loading="lazy"></a></figure><div><p class="eyebrow">46 × 46 MM / 20 LEDS</p><h3>Expression through light.</h3><p>Individual resistors limit LED current. A single PWM-controlled MOSFET produces breathing and motion-synchronized brightness.</p></div></div>
     </section>

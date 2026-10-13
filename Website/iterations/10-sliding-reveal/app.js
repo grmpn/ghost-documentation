@@ -63,7 +63,7 @@
     section.append(first);
     if (section.id === 'mechanical') extraPanel(section, '.paired-details', 'Packaging & support.', 'packaging-details');
     if (section.id === 'electronics') {
-      extraPanel(section, '.board-notes', 'Designing the interfaces.', 'board-details');
+      first.classList.add('electronics-panel');
       extraPanel(section, '.led-feature', 'Expression through light.', 'lighting-details');
     }
     if (section.id === 'results') extraPanel(section, '.reflection', 'Design the interfaces with the parts.', 'reflection-details');
@@ -168,7 +168,13 @@
     const panel = event.target.closest('.story-panel');
     if (!panel) return;
     const rect = panel.getBoundingClientRect();
-    if (rect.left < -20 || rect.left > window.innerWidth * .5) goTo(panel, 'instant');
+    const focused = event.target.getBoundingClientRect();
+    if (rect.width > window.innerWidth + 2) {
+      if (focused.left < 0 || focused.right > window.innerWidth) {
+        const offset = focused.left - track.getBoundingClientRect().left - window.innerWidth * .25;
+        window.scrollTo({ top: revealDistance + offset / horizontalGain, behavior: 'instant' });
+      }
+    } else if (rect.left < -20 || rect.left > window.innerWidth * .5) goTo(panel, 'instant');
   });
   measure();
   // Fonts and late image layout must not change the horizontal travel distance.
@@ -191,9 +197,8 @@
   }));
 
   const boards = {
-    front: { src: 'assets/main-pcb-v2-front.png', label: 'MAIN PCB / REVISION 2 / FRONT', alt: 'KiCad front render of the Revision 2 main PCB with four edge cutouts, central wiring opening, servo headers, and ESP32-S3 module.', caption: '93 mm profile, four mechanism cutouts, one central wire route.' },
-    back: { src: 'assets/main-pcb-v2-back.png', label: 'MAIN PCB / REVISION 2 / BACK', alt: 'KiCad back render of the Revision 2 main PCB, showing rear-side routing and components around its mechanism-clearance cutouts.', caption: 'Routing and components on both faces preserve the compact footprint.' },
-    revision: { src: 'assets/main-pcb-v1-front.png', label: 'MAIN PCB / REVISION 1 / FRONT', alt: 'KiCad render of the preliminary Revision 1 main PCB. Any displayed LCD cable is representative geometry, not verified dimensions.', caption: 'Preliminary circuit-validation board. LCD cable geometry is representative.' }
+    front: { src: 'assets/main-pcb-v2-front.png', label: 'REVISION 2 / FRONT', alt: 'KiCad front render of the Revision 2 main PCB with four edge cutouts, central wiring opening, servo headers, and ESP32-S3 module.', caption: '93 mm profile, four mechanism cutouts, one central wire route.' },
+    back: { src: 'assets/main-pcb-v2-back.png', label: 'REVISION 2 / BACK', alt: 'KiCad back render of the Revision 2 main PCB, showing rear-side routing and components around its mechanism-clearance cutouts.', caption: 'Routing and components on both faces preserve the compact footprint.' },
   };
   document.querySelectorAll('[data-board]').forEach(button => button.addEventListener('click', () => {
     const board = boards[button.dataset.board];
@@ -202,7 +207,7 @@
     document.querySelector('#pcb-caption').textContent = board.caption;
     const zoom = document.querySelector('#pcb-zoom');
     zoom.href = board.src;
-    zoom.dataset.caption = `${board.label} â€” ${board.caption}`;
+    zoom.dataset.caption = `${board.label} — ${board.caption}`;
     document.querySelectorAll('[data-board]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
   }));
 

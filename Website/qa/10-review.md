@@ -67,3 +67,23 @@
 - Resource/structure checks and JavaScript syntax passed. Original PNGs are unchanged.
   `10-edge-crop-specs.png` records the updated settled composition. Reduced-motion and
   print retain their prior static framing; no separate preference emulation performed.
+
+## Borderless surfaces and independent electronics comparison
+
+- Electronics now holds Revision 1 left, three explanatory notes in the center and
+  Revision 2 right. Only Revision 2 has Front/Back controls. The board-details
+  continuation is merged into the main electronics panel; 14 panels now remain.
+- At 719 × 697 CSS px the complete comparison fits vertically (bottom ≈642 px).
+  Computed borders and shadows for glass surfaces, hero frame and segmented controls
+  are zero/none. Selected controls keep violet fill; keyboard focus outlines remain.
+- Verified Revision 2 Back changes only `pcb-image` to `main-pcb-v2-back.png` while
+  `pcb-v1-image` stays `main-pcb-v1-front.png`. Revision 1 enlargement displays its
+  representative-cable qualification. Source artwork remains unchanged.
+- Resource/structure/HTTP checks: 32 files, ten sections, 32 unique IDs, eight image
+  alternatives; JavaScript syntax passed. Phone comparison uses a 960px horizontal
+  panorama to retain readable left/text/right columns, with focus targeting within it.
+
+- Follow-up responsive verification: 1152 × 720 comparison bottom ≈658 px; phone
+  390 × 844 panorama bottom ≈716 px. Panned right and switched Revision 2 back to Front
+  without changing Revision 1 or snapping the panorama. Temporary viewport reset and
+  electronics comparison left open. Screenshot: `10-electronics-comparison.png`.

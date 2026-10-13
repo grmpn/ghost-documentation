@@ -5,9 +5,9 @@ Ghost project remains the source of truth for facts, engineering notes, and orig
 
 ## Current iteration
 
-`iterations/10-sliding-reveal/` is the latest local comparison, inspired by the composition
+`iterations/11-charcoal-grid/` is the latest local comparison. It builds on iteration 10, inspired by the composition
 of [Lusion’s Synthetic Human case study](https://lusion.co/projects/synthetic_human/).
-Preview: `http://127.0.0.1:4173/iterations/10-sliding-reveal/`.
+Preview: `http://127.0.0.1:4173/iterations/11-charcoal-grid/`.
 
 - Opens with GHOST, personal-project context and ownership on the left, and the supplied
   light-only photograph in a sharp rectangular box on the right.
@@ -16,8 +16,8 @@ Preview: `http://127.0.0.1:4173/iterations/10-sliding-reveal/`.
   no vertical section movement. The sequence ends at the closing panel rather than looping.
 - The opening retains the light-only → full-lit Ghost transition and specifications.
   After that reveal, the entire opening slides left and the demo enters from the right.
-- All ten sections remain; mechanics, board details, lighting and reflection get additional
-  horizontal panels so content fits. There are 15 panels including the opening and ending.
+- All ten sections remain; mechanics and reflection get additional
+  horizontal panels so content fits. There are 13 panels including the opening and ending.
 - Neutral iteration 02-style navigation, Rajdhani page text, sharp corners and normal
   cursor remain. Chapter links, hash targets and keyboard focus move to the relevant panel.
 - `horizontal.css` owns the continuous layout; `app.js` constructs panels from the existing
@@ -34,9 +34,18 @@ Preview: `http://127.0.0.1:4173/iterations/10-sliding-reveal/`.
   a 112vw frame below the copy with the same edge-crop proportion. Full local
   Rajdhani 400/500/600 files, source metadata and SIL OFL remain bundled. Existing
   outlined engineering artwork is retained. All evidence qualifications remain.
+- UI rectangles are borderless, including panels, navigation surfaces, tables, dialogs and
+  view controls; selected controls use fill, while keyboard focus outlines remain.
+- Electronics pairs the final main PCB (Front/Back) with the LED PCB, with shared
+  explanation between them. Revision 1 and the separate LED panel are removed.
+  Enlarged square display crops exclude the orientation gimbals while keeping the full
+  boards; enlarged dialogs use the same crop. Original PNGs remain unchanged.
+  Phones retain the readable 960px horizontal composition.
 - Prior iterations are preserved. This is a local comparison, not final acceptance.
 
-See `qa/10-review.md` for validation and limits.
+Iteration 11 uses opaque charcoal panels in dark sections and light neutral gray panels in white sections, with contrasting text and gray/charcoal controls. Architecture through Control sit on palette white (#EFEFF0), including the Mechanics continuation; the page is black (#070708) before Architecture and from Revisions onward. These bands meet at hard edges. Fixed navigation and the scroll indicator invert locally over the moving background; expanded phone navigation stays opaque for readability. Navigation now floats without a bar background, with responsive 16–24px Rajdhani 600 text and 32px desktop edge insets. Dialogs keep the charcoal fill; PCB headers, images and captions align. `surfaces.css` owns this treatment. Iteration 10 is preserved.
+
+See `qa/11-review.md` for validation and limits.
 
 ## Earlier comparisons
 
@@ -87,7 +96,7 @@ From the project root:
 node Website/preview.mjs
 ```
 
-Open `http://127.0.0.1:4173/iterations/10-sliding-reveal/` for the current prototype, or
+Open `http://127.0.0.1:4173/iterations/11-charcoal-grid/` for the current prototype, or
 `http://127.0.0.1:4173/` for the iteration index. Stop the server with Ctrl+C. Pass a
 different port as the last argument if needed. No package installation or build is required.
 
@@ -98,7 +107,8 @@ view switches, media configuration, and the mobile menu use JavaScript.
 ## Organization
 
 - `index.html` — visual iteration index.
-- `iterations/10-sliding-reveal/` — current boxed photo and sliding specifications reveal.
+- `iterations/11-charcoal-grid/` — current solid charcoal panels and final-board electronics.
+- `iterations/10-sliding-reveal/` — preserved boxed photo and sliding specifications reveal.
 - `iterations/08-vector-reveal/` — preserved vector-to-light-to-shell scroll reveal.
 - `iterations/07-violet-prism/` — preserved Rajdhani Semibold title with the real light from the start.
 - `iterations/08-vector-reveal/hero.css` — Rajdhani title, opening composition, and scroll reveal.

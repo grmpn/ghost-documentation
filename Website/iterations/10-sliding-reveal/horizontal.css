@@ -179,3 +179,48 @@
   .horizontal-story .opening-copy { transform: translateX(var(--intro-shift, 0vw)); }
   .horizontal-story .hero-details { left: 6vw; width: 88vw; }
 }
+
+/* Borderless rectangular surfaces; retain keyboard focus outlines and figure geometry. */
+.glass, .hero-art, .site-header::before, .site-header nav.js-nav,
+.segmented button, .segmented button::before, .segmented button[aria-pressed=true]::before,
+.dialog-close, .dialog-close::before, .dialog-toolbar,
+.hero-specs, .hero-specs > div, .spec-list > div, .scorecard > div,
+.story-panel .scorecard > div, .story-panel .board-notes > div,
+.story, .future-list article, .technical-note, .routine-phases, .routine-phases li,
+.demo-figure figcaption, .site-footer, .rear-study span {
+  border: 0;
+  box-shadow: none;
+}
+.demo-stage::before, .demo-stage::after { border: 0; }
+/* Two independent boards, with the explanation occupying the space between them. */
+.story-panel .pcb-comparison, .pcb-comparison {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .85fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(20px, 3vw, 48px);
+}
+.pcb-comparison .pcb-figure { width: 100%; margin: 0; align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+.story-panel .pcb-comparison .pcb-figure > img { width: 100%; height: clamp(175px, 34svh, 330px); aspect-ratio: auto; object-fit: contain; background: transparent; }
+.pcb-comparison .figure-topline { padding: 15px; gap: 10px; flex-wrap: wrap; }
+.pcb-comparison .figure-topline > span { font-size: 12px; white-space: nowrap; }
+.pcb-comparison .text-link { font-size: 12px; }
+.pcb-comparison .text-link span { width: auto; margin-left: 4px; }
+.story-panel .pcb-comparison .board-notes { display: block; }
+.story-panel .pcb-comparison .board-notes > div { border: 0; padding: 0; margin: 0; }
+.story-panel .pcb-comparison .board-notes > div + div { margin-top: 24px; }
+.story-panel .pcb-comparison .board-notes h3 { font-size: clamp(21px, 2vw, 28px); margin-bottom: 8px; }
+.story-panel .pcb-comparison .board-notes p { font-size: clamp(14px, 1.4vw, 17px); line-height: 1.5; }
+.story-panel .pcb-comparison figcaption { font-size: 12px; line-height: 1.45; padding: 14px 15px; }
+.story-panel .pcb-comparison .segmented { padding: 12px 10px 0; }
+@media (max-width: 600px) {
+  /* Keep the left–text–right composition as a readable horizontal panorama. */
+  .horizontal-story .electronics-panel { width: 960px; flex-basis: 960px; padding-inline: 24px; }
+  .story-panel .pcb-comparison { grid-template-columns: 290px 240px 290px; gap: 40px; }
+  .story-panel .pcb-comparison .board-notes p { font-size: 17px; }
+  .story-panel .pcb-comparison .board-notes h3 { font-size: 25px; }
+  .story-panel .pcb-comparison .pcb-figure > img { height: 30svh; }
+}
+@media print {
+  .horizontal-story .electronics-panel { width: auto; }
+  .story-panel .pcb-comparison { grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+}
