@@ -90,3 +90,36 @@
 - At overlapping coordinates, elementFromPoint returned hero-eye, while detail copy
   had begun fading in. Screenshot confirms text is occluded by the image frame.
 - Evidence: 11-hero-image-over-copy.png. CSS-only stacking change.
+
+## In motion composition and routine consolidation — 2026-10-12
+
+- Matched the reference at 1700×886 CSS pixels: title/copy left, capture card right.
+  Added scripted choreography, independent PWM, indexed home positions and open-loop
+  limits; removed the standalone Control timeline and renumbered following sections.
+- Checked 696×697 pane, 390×844 phone and 312×675 small phone. Fixed figure flex-shrink
+  clipping on small phones; the capture caption and duration remain visible. At 312×675,
+  figure client/scroll heights both equal 174px and its bottom is about 610px.
+- Phone menu's In motion link navigates and closes the menu. Twelve total panels and no
+  Control region verified. Resource check: 33 files, nine sections, 29 unique IDs and
+  seven image alternatives passed; app.js syntax passed. Viewport restored afterward.
+- Evidence: `11-in-motion-desktop.jpg`, `11-in-motion-phone.jpg`.
+- Final video is unavailable, so playback with the actual footage remains unverified.
+  This pass verifies website presentation only, not hardware behavior.
+
+## Shared typography and text alignment — 2026-10-12
+
+- Desktop computed title/body/note sizes: 48/20/13px, including the specifications
+  reveal. All normal section paragraphs share body size; notes and labels share note size.
+  Compact 32/16/12px and smallest-phone 28/14/12px are shared across sections.
+- At 1700×886, upper panel content starts at 160px and lower content at 248px. At the
+  696×697 pane the starts are 125px and 195px. All main content fits vertically.
+- Reviewed specifications and Brief visually at desktop; removed Compact by design.
+  Screenshots: `11-type-specifications.jpg`, `11-type-brief.jpg`.
+- Checked 390×844 and 312×675 phones. Small-phone panel content ends at or above 628px,
+  leaving the bottom scroll indicator clear. Dense Mechanics now uses a 720px horizontal
+  panorama at ≤600px width / ≤760px height, keeping the same type and upper guide.
+- Small-phone specification content ends at 442.7px before the image starts at 445.6px;
+  validation note remains visible. Screenshot: `11-type-phone.jpg`. Viewport restored.
+- All 34 resources, nine sections, 29 unique IDs, seven image alternatives and anchors
+  passed the resource check. app.js syntax passed. Physical validation, actual demo
+  playback, no-script and print appearance were not validated in this styling pass.

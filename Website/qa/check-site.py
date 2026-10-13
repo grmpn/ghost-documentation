@@ -31,7 +31,8 @@ class Page(HTMLParser):
 page = Page()
 page.feed((root / 'index.html').read_text(encoding='utf-8'))
 assert len(page.ids) == len(set(page.ids)), 'Duplicate IDs'
-assert page.sections == 10, 'Expected all ten sections'
+expected_sections = 9 if iteration == '11-charcoal-grid' else 10
+assert page.sections == expected_sections, f'Expected {expected_sections} sections'
 assert len(page.headings) == 1, 'Expected a single H1'
 assert all(i.get('alt') or (i.get('aria-hidden') == 'true' and i.get('alt') == '') for i in page.images), 'Missing image alternative text'
 for ref in page.refs:

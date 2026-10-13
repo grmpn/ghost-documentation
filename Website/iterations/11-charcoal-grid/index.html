@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="hero.css">
   <link rel="stylesheet" href="horizontal.css">
   <link rel="stylesheet" href="surfaces.css">
+  <link rel="stylesheet" href="type-layout.css">
   <script src="media.js" defer></script>
   <script src="app.js" defer></script>
 </head>
@@ -27,10 +28,10 @@
     <a class="wordmark" href="#hero" aria-label="Ghost, back to top"><span class="brand-symbol" aria-hidden="true"></span>GHOST</a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" hidden>Sections <span aria-hidden="true">+</span></button>
     <nav id="primary-nav" aria-label="Main navigation">
+      <a href="#demo">In motion</a>
       <a href="#brief">Overview</a>
       <a href="#mechanical">Mechanics</a>
       <a href="#electronics">Electronics</a>
-      <a href="#control">Control</a>
       <a href="#results">Results</a>
     </nav>
   </header>
@@ -54,7 +55,6 @@
             <div class="image-label" aria-hidden="true"><span>GHOST / FRONT VIEW</span><span>01 — 02</span></div>
           </figure>
           <div class="hero-details" id="introduction" tabindex="-1">
-            <p class="eyebrow">COMPACT BY DESIGN</p>
             <h2>Small envelope.<br>Full expression.</h2>
             <p class="details-intro">Four articulated spikes, a rotating rear shell, and coordinated lighting. Designed together, from the mechanisms to the boards and firmware.</p>
             <dl class="hero-specs">
@@ -71,18 +71,24 @@
     </section>
 
     <section id="demo" class="section wrap" aria-labelledby="demo-title">
-      <div class="section-heading"><div><p class="eyebrow">01 / IN MOTION</p><h2 id="demo-title">From mechanism to character.</h2></div><span class="section-aside">ARTICULATION / ROTATION / LIGHT</span></div>
+      <div class="demo-copy">
+        <div class="section-heading"><div><p class="eyebrow">01 / IN MOTION</p><h2 id="demo-title">From mechanism to character.</h2></div></div>
+        <div class="prose">
+          <p>A scripted performance brings the four spikes, rotating rear shell, and front light together. Timed keyframes and smooth transitions move from synchronized gestures to ripples and simulated talking, before settling into a breathing-light idle.</p>
+          <p>The ESP32-S3 runs the sequence through independent PWM channels. Motion is open loop: the servos follow programmed commands from mechanically indexed home positions, without sensor feedback or live input.</p>
+        </div>
+      </div>
       <figure class="demo-figure glass" data-media="demo">
         <div class="demo-stage" data-demo-stage>
           <span class="stage-label">PERFORMANCE CAPTURE</span>
           <div class="demo-center"><span class="aperture" aria-hidden="true"></span><p>Final video pending</p></div>
-          <div class="stage-bottom"><span>30–60 SEC</span><span>THREE-QUARTER VIEW</span></div>
+          <div class="stage-bottom"><span>30–60 SEC</span></div>
         </div>
         <figcaption>Capture follows the final shell revision and supervised routine validation.</figcaption>
       </figure>
     </section>
 
-    <section id="brief" class="section wrap" aria-labelledby="brief-title">
+    <section id="brief" class="section wrap" data-reading="short" aria-labelledby="brief-title">
       <div class="section-heading"><div><p class="eyebrow">02 / THE BRIEF</p><h2 id="brief-title">Keep the form.<br>Make it move.</h2></div></div>
       <div class="brief-grid">
         <div class="prose"><p>Inspired by the Ghost from <em>Destiny</em>, I designed four articulated spikes, a rotating rear shell, and expressive lighting around a 100 mm main-sphere limit.</p><p>Preserving its proportions drove the design. Additional motion axes were dropped when their mechanisms competed with the servos, boards, and wiring for space.</p></div>
@@ -138,13 +144,8 @@
       </div>
     </section>
 
-    <section id="control" class="section wrap light-chapter" aria-labelledby="control-title">
-      <div class="section-heading"><div><p class="eyebrow">06 / CONTROL</p><h2 id="control-title">Choreography,<br>one channel at a time.</h2></div><p>Direct LEDC outputs drive five servos at 50 Hz and lighting at 5 kHz. Interpolation softens transitions; keyframes coordinate the performance.</p></div>
-      <figure class="routine-figure glass"><div class="figure-topline"><span>PROGRAMMED SEQUENCE / ≈ 55.6 S + IDLE</span><span class="pending-text">Final run pending</span></div><ol class="routine-phases"><li><span>01</span><strong>Home</strong><small>6.0 s</small><p>Park &amp; fade</p></li><li><span>02</span><strong>Breathe</strong><small>8.0 s</small><p>Light</p></li><li><span>03</span><strong>Sync</strong><small>8.0 s</small><p>Four spikes</p></li><li><span>04</span><strong>Ripple</strong><small>≈ 5.3 s</small><p>N → E → S → W</p></li><li><span>05</span><strong>Rotate</strong><small>12.0 s</small><p>Rear shell</p></li><li><span>06</span><strong>Talk</strong><small>≈ 9.3 s</small><p>Paired motion</p></li><li><span>07</span><strong>Finale</strong><small>7.0 s</small><p>All features</p></li><li><span>08</span><strong>Idle</strong><small>∞</small><p>Light</p></li></ol><figcaption>Open-loop demonstration with mechanically indexed home positions and no sensor feedback. Programmed timings; phase widths are not time-scaled.</figcaption></figure>
-    </section>
-
     <section id="integration" class="section wrap" aria-labelledby="integration-title">
-      <div class="section-heading"><div><p class="eyebrow">07 / REVISIONS</p><h2 id="integration-title">What testing changed.</h2></div></div>
+      <div class="section-heading"><div><p class="eyebrow">06 / REVISIONS</p><h2 id="integration-title">What testing changed.</h2></div></div>
       <div class="story-list">
         <article class="story"><span class="story-number">01</span><h3>A shared envelope.</h3><div><p>Cams, servo axes, and the PCB competed for space. Iterating the housing and board outline together produced a stack that fits the original shell.</p></div></article>
         <article class="story"><span class="story-number">02</span><h3>Gravity was not enough.</h3><div><p>The unsprung lower spike stayed open. Preloaded torsion springs made return independent of orientation.</p></div></article>
@@ -153,12 +154,12 @@
     </section>
 
     <section id="results" class="section wrap" aria-labelledby="results-title">
-      <div class="section-heading"><div><p class="eyebrow">08 / RESULTS</p><h2 id="results-title">Built. Integrated.<br>In final validation.</h2></div></div>
+      <div class="section-heading"><div><p class="eyebrow">07 / RESULTS</p><h2 id="results-title">Built. Integrated.<br>In final validation.</h2></div></div>
       <div class="results-grid"><div class="scorecard glass"><div><span>Packaging &amp; scale</span><strong>Confirmed</strong><p>The full stack fits the intended envelope.</p></div><div><span>Motion &amp; lighting</span><strong>Observed</strong><p>Five actuators and the LED board operate together.</p></div><div><span>Repeatability</span><strong>Observed</strong><p>Five-plus consecutive tuning runs; not an endurance test.</p></div><div><span>Latest routine &amp; rear shell</span><strong class="pending-text">Pending</strong><p>Final geometry and sequence require a supervised run.</p></div></div><div class="reflection prose"><p class="eyebrow">THE MAIN LESSON</p><h3>Design the interfaces<br>with the parts.</h3><p>Actuator axes, board outlines, wire paths, and assembly access shaped the system together. Settling those interfaces early matters more than optimizing each part in isolation.</p><p class="technical-note">Final mass, usable interior volume, and measured spike travel remain open.</p></div></div>
     </section>
 
-    <section id="future" class="section wrap" aria-labelledby="future-title">
-      <div class="section-heading"><div><p class="eyebrow">09 / NEXT REFINEMENTS</p><h2 id="future-title">Refine what works.</h2></div></div>
+    <section id="future" class="section wrap" data-reading="short" aria-labelledby="future-title">
+      <div class="section-heading"><div><p class="eyebrow">08 / NEXT REFINEMENTS</p><h2 id="future-title">Refine what works.</h2></div></div>
       <div class="future-list"><article><span>MECHANICAL</span><h3>Broader follower contact.</h3><p>A focused geometry refinement within the existing clearances.</p></article><article><span>ELECTRONICS</span><h3>Better serviceability.</h3><p>Purposeful cable strain relief and a review of startup-sensitive GPIO choices.</p></article><article><span>SOFTWARE</span><h3>Reusable character actions.</h3><p>Named behaviors built from the existing motion and lighting helpers.</p></article></div>
     </section>
   </main>

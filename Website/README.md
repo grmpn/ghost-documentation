@@ -16,8 +16,12 @@ Preview: `http://127.0.0.1:4173/iterations/11-charcoal-grid/`.
   no vertical section movement. The sequence ends at the closing panel rather than looping.
 - The opening retains the light-only → full-lit Ghost transition and specifications.
   After that reveal, the entire opening slides left and the demo enters from the right.
-- All ten sections remain; mechanics and reflection get additional
-  horizontal panels so content fits. There are 13 panels including the opening and ending.
+- Nine sections remain; control context is folded into In motion and the separate routine
+  timeline is removed. Mechanics and reflection have additional horizontal panels.
+  There are 12 panels including the opening and ending.
+- In motion pairs the title and scripted/open-loop performance explanation on the left
+  with the capture panel on the right. Phones stack these, with a compact short-phone
+  treatment. The navigation links directly to In motion.
 - Neutral iteration 02-style navigation, Rajdhani page text, sharp corners and normal
   cursor remain. Chapter links, hash targets and keyboard focus move to the relevant panel.
 - `horizontal.css` owns the continuous layout; `app.js` constructs panels from the existing
@@ -43,7 +47,13 @@ Preview: `http://127.0.0.1:4173/iterations/11-charcoal-grid/`.
   Phones retain the readable 960px horizontal composition.
 - Prior iterations are preserved. This is a local comparison, not final acceptance.
 
-Iteration 11 uses opaque charcoal panels in dark sections and light neutral gray panels in white sections, with contrasting text and gray/charcoal controls. Architecture through Control sit on palette white (#EFEFF0), including the Mechanics continuation; the page is black (#070708) before Architecture and from Revisions onward. These bands meet at hard edges. Fixed navigation and the scroll indicator invert locally over the moving background; expanded phone navigation stays opaque for readability. Navigation now floats without a bar background, with responsive 16–24px Rajdhani 600 text and 32px desktop edge insets. Dialogs keep the charcoal fill; PCB headers, images and captions align. `surfaces.css` owns this treatment. Iteration 10 is preserved.
+Iteration 11 uses opaque charcoal panels in dark sections and light neutral gray panels in white sections, with contrasting text and gray/charcoal controls. Architecture through Electronics sit on palette white (#EFEFF0), including the Mechanics continuation; the page is black (#070708) before Architecture and from Revisions onward. These bands meet at hard edges. Fixed navigation and the scroll indicator invert locally over the moving background; expanded phone navigation stays opaque for readability. Navigation now floats without a bar background, with responsive 16–24px Rajdhani 600 text and 32px desktop edge insets. Dialogs keep the charcoal fill; PCB headers, images and captions align. `surfaces.css` owns this treatment. Iteration 10 is preserved.
+
+Section reading styles are centralized in `type-layout.css`: 48/20/13px title/body/note
+on desktop, 32/16/12px for compact viewports and 28/14/12px on the smallest phones.
+Long panels start at 18svh; Brief, Reflection, Future and the footer start at 28svh,
+with header-clearance minimums. Phones use 12svh/20svh plus minimum clearance. The
+specifications reveal shares these rules and omits the Compact by design label.
 
 See `qa/11-review.md` for validation and limits.
 

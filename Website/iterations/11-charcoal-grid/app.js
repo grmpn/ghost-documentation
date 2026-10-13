@@ -43,6 +43,7 @@
     const panel = document.createElement('div');
     panel.className = 'story-panel continuation';
     panel.id = id;
+    if (id === 'reflection-details') panel.dataset.reading = 'short';
     const heading = document.createElement('div');
     heading.className = 'section-heading';
     const label = document.createElement('p');
@@ -69,6 +70,7 @@
   }
   const footer = document.querySelector('.site-footer');
   footer.classList.add('story-panel');
+  footer.dataset.reading = 'short';
   track.append(footer);
   viewport.append(track);
   main.append(viewport);
@@ -110,7 +112,7 @@
     details.style.pointerEvents = specs > .1 ? '' : 'none';
     let current = sections[0].id;
     for (const section of sections) if (section.offsetLeft <= x + window.innerWidth * .4) current = section.id;
-    const groups = { architecture: 'brief', integration: 'control', future: 'results' };
+    const groups = { architecture: 'brief', integration: 'results', future: 'results' };
     current = groups[current] || current;
     for (const link of navLinks) {
       if (link.hash === `#${current}`) link.setAttribute('aria-current', 'location');

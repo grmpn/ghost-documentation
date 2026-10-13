@@ -1,0 +1,94 @@
+/* Shared reading system. Keep section-specific media layout in horizontal.css.
+   The oversized opening GHOST and fixed navigation retain their display/UI sizing. */
+:root {
+  --type-title: 48px;
+  --type-body: 20px;
+  --type-note: 13px;
+  --leading-body: 1.5;
+  --text-high: max(104px, 18svh);
+  --text-low: max(144px, 28svh);
+  --text-start: var(--text-high);
+  --heading-label-space: calc(var(--type-note) * 1.5 + 10px);
+  --reading-gap: 24px;
+}
+[data-reading="short"] { --text-start: var(--text-low); }
+@media (max-width: 1050px), (max-height: 700px) {
+  :root { --type-title: 32px; --type-body: 16px; --type-note: 12px; --leading-body: 1.4; --reading-gap: 20px; }
+}
+@media (max-width: 600px) {
+  :root { --text-high: max(88px, 12svh); --text-low: max(116px, 20svh); }
+}
+@media (max-width: 360px) {
+  :root { --type-title: 28px; --type-body: 14px; --reading-gap: 16px; }
+}
+
+/* Three roles, applied directly so older component font sizes cannot leak through. */
+#main :is(.story-panel, .hero-details) { font-size: var(--type-body); line-height: var(--leading-body); }
+#main :is(.story-panel, .hero-details) h2 {
+  font-size: var(--type-title);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -.04em;
+}
+#main :is(.story-panel, .hero-details) :is(p, h3, dt, dd, .scorecard > div, .spec-list > div, .scorecard strong, .demo-center p) {
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
+}
+#main :is(.story-panel, .hero-details) h3 { font-weight: 600; letter-spacing: -.02em; }
+#main :is(.story-panel, .hero-details) :is(.eyebrow, figcaption, .technical-note, .project-status, .hero-media-note, .hero-specs dt, .hero-specs dd span, .figure-topline, .figure-topline > span, .text-link, .segmented button, .placeholder-tag, .stage-label, .stage-bottom, .mechanism-key, .story-number, .future-list article > span, .prototype-label) {
+  font-size: var(--type-note);
+  line-height: 1.5;
+}
+#main .hero-details .details-intro { margin-top: var(--reading-gap); }
+#main .hero-specs { margin-top: var(--reading-gap); }
+#main .hero-specs > div { padding-block: 14px; }
+#main .hero-specs dd { white-space: normal; }
+#main .story-panel .section-heading { align-items: flex-start; gap: var(--reading-gap); }
+#main .story-panel .section-heading > p { padding-top: var(--heading-label-space); }
+#main .story-panel .section-heading .eyebrow { margin-bottom: 10px; }
+#main .story-panel .demo-copy .prose { margin-top: var(--reading-gap); }
+#main .story-panel .prose p + p { margin-top: var(--reading-gap); }
+
+@media screen {
+  /* Exactly two content starts; all panels align from their top rather than centering. */
+  #main .story-panel {
+    padding-top: var(--text-start);
+    padding-bottom: 52px;
+    justify-content: flex-start;
+    align-content: start;
+    gap: var(--reading-gap);
+  }
+  #main #demo .story-panel { align-items: start; column-gap: 7vw; }
+  #main #demo .demo-figure { margin-top: var(--heading-label-space); }
+  #main .hero-details {
+    top: var(--text-start);
+    transform: none;
+    padding-top: var(--heading-label-space);
+  }
+  #main .story-panel .section-heading > p { margin-top: 0; }
+}
+@media screen and (max-width: 900px) {
+  #main #demo .story-panel { column-gap: 4vw; }
+}
+@media screen and (max-width: 600px) {
+  #main .story-panel .section-heading > p { padding-top: 14px; }
+  #main #demo .demo-figure { margin-top: 0; }
+  #main .hero-specs > div { padding-block: 10px; }
+  #main .hero-details .project-status { margin-top: 12px; }
+  #main .story-panel .mechanism-copy { margin-top: 14px; }
+}
+@media print {
+  #main .story-panel { padding: 30px; }
+}
+@media screen and (max-width: 600px) and (max-height: 760px) {
+  /* Use the existing horizontal reading path for dense mechanism content. */
+  #main #mechanical > .story-panel:first-child { width: 720px; flex-basis: 720px; }
+  #main #mechanical .mechanism-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+  #main #mechanical .mechanism-copy { margin-top: 0; }
+}
+@media screen and (max-width: 360px) {
+  #main .hero-specs > div { padding-block: 5px; }
+  #main .hero-specs dt { margin-bottom: 4px; }
+  #main .hero-details .details-intro { margin-top: 12px; }
+  #main .hero-details .project-status { margin-top: 8px; }
+}
