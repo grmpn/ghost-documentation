@@ -1,12 +1,12 @@
 // Sources are relative to this iteration. Retain originals in project Assets/.
-// The eye mask is calibrated in hero.css for this image. Recheck it when replacing
-// the source; the same file feeds the emerging white shell and isolated symbol.
+// Crossfade the complete 3840 x 2160 sources with no website color treatment or masks.
 window.GHOST_MEDIA = {
   hero: {
-    src: 'assets/ghost-front.webp',
-    alt: 'User-supplied temporary front reference image of the Destiny Ghost. Final build photography is pending.',
-    caption: 'Temporary reference image · final build photography pending.',
-    placeholder: true,
+    src: 'assets/ghost-assembly-full.png',
+    lightSrc: 'assets/ghost-assembly-light.png',
+    alt: 'Front view of the assembled Ghost with four white spikes surrounding its illuminated blue diamond and circular center.',
+    caption: 'Real assembly · illuminated front view.',
+    placeholder: false,
     fit: 'contain',
     position: '50% 50%'
   },

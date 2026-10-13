@@ -27,57 +27,54 @@
   height: 100svh;
   overflow: hidden;
   background: var(--bg);
-  --art-size: min(112vh, 116vw);
-  --art-size: min(112svh, 116vw);
+  /* Cover every viewport edge while keeping the photographed light registered.
+     A little overscan places the source canvas edges outside the viewport. */
+  --photo-width: max(104vw, 204vh);
+  --photo-width: max(104vw, 204svh);
+  --logo-size: calc(var(--photo-width) * .08125);
   --shell-opacity: 1;
   --word-opacity: 1;
-  --shell-light: 1.55;
   --outline-opacity: 0;
-  --eye-opacity: 1;
+  --eye-opacity: 0;
 }
 .hero-art {
   position: absolute;
   z-index: 2;
   left: 50%;
-  top: 50%;
-  width: var(--art-size);
-  height: var(--art-size);
+  top: 52%;
+  width: var(--photo-width);
+  aspect-ratio: 16 / 9;
   /* Align the source eye to the viewport center, not the source canvas edge. */
-  transform: translate(-49.6%, -49.5%);
+  transform: translate(-51.7578%, -45.7176%);
   pointer-events: none;
 }
 .hero-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
-.hero-shell {
-  opacity: var(--shell-opacity);
-  filter: grayscale(1) contrast(.92) brightness(var(--shell-light));
-}
-.hero-eye {
-  opacity: var(--eye-opacity);
-  filter: saturate(.8) brightness(1.1);
-  mask-image: radial-gradient(ellipse 8% 10% at 49.6% 49.5%, #000 45%, #000b 65%, transparent 100%);
-}
+/* Raw source colors and glow; only transition opacity changes. Viewport cropping is intentional. */
+.hero-shell { opacity: var(--shell-opacity); }
+.hero-eye { opacity: var(--eye-opacity); }
 .hero-art .hero-outline {
   display: none;
   inset: auto;
-  left: 49.6%;
-  top: 49.5%;
-  width: 13.4%;
+  left: 51.7578%;
+  top: 45.7176%;
+  /* The unchanged CAD contour spans 312 source-photo pixels after rotation. */
+  width: 6.8628%;
   height: auto;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(-45deg);
   opacity: var(--outline-opacity);
 }
 .hero-title {
   position: absolute;
   z-index: 3;
   left: 50%;
-  top: calc(50% + var(--art-size) * .22);
+  top: 78%;
   transform: translateX(-50%);
   display: grid;
-  grid-template-columns: repeat(5, .72em);
+  grid-template-columns: repeat(2, .72em) max(.72em, calc(var(--logo-size) + .1em)) repeat(2, .72em);
   width: max-content;
   margin: 0;
   font: 600 min(24vw, 24vh, 240px) / .8 'Ghost Rajdhani', 'Ubuntu Sans', sans-serif;
-  font-size: min(24vw, 24svh, 240px);
+  font-size: min(24vw, 24svh, 240px, calc((94vw - var(--logo-size)) / 3));
   letter-spacing: 0;
   text-align: center;
   color: #fff;
@@ -93,14 +90,13 @@
   top: 0;
   --shell-opacity: 0;
   --word-opacity: 1;
-  --shell-light: .25;
   --outline-opacity: 1;
   --eye-opacity: 0;
 }
 .hero-motion .hero-outline { display: block; }
 .hero-motion .hero-title {
-  z-index: 1;
-  top: 50%;
+  z-index: 3;
+  top: 52%;
   transform: translate(-50%, -50%);
   color: #c5c9ce;
   mix-blend-mode: normal;
@@ -154,7 +150,7 @@ figcaption { color: #a0a0a8; }
 }
 @media print {
   .hero-motion .hero-runway { height: auto; }
-  .hero-motion .hero-stage { position: relative; height: 80vh; --shell-opacity: 1 !important; --shell-light: 1.55 !important; --eye-opacity: 1 !important; }
+  .hero-motion .hero-stage { position: relative; height: 80vh; --shell-opacity: 1 !important; --eye-opacity: 0 !important; }
   .hero-outline { display: none !important; }
   .hero-motion .hero-title { opacity: 0; }
   .hero-title { mix-blend-mode: normal; color: #fff; }

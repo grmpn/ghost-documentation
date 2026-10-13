@@ -35,15 +35,16 @@
   function updateNavigation() {
     const distance = Math.max(1, runway.offsetHeight - stage.offsetHeight);
     const progress = clamp(-runway.getBoundingClientRect().top / distance);
-    // Fade the word and vector together into the real light, then reveal the shell.
-    const light = reducedMotion.matches ? 1 : smooth(.08, .32, progress);
-    const shell = reducedMotion.matches ? 1 : smooth(.58, .9, progress);
-    stage.style.setProperty('--outline-opacity', (reducedMotion.matches ? 0 : 1 - light).toFixed(4));
-    stage.style.setProperty('--eye-opacity', light.toFixed(4));
+    // Crossfade the complete source images; retain their colors, alpha and background glow.
+    const titleFade = smooth(.08, .32, progress);
+    const light = reducedMotion.matches ? 1 : smooth(.08, .20, progress);
+    // The light is a passing layer: the full assembly arrives as the title disappears.
+    const shell = reducedMotion.matches ? 1 : smooth(.14, .32, progress);
+    stage.style.setProperty('--outline-opacity', (reducedMotion.matches ? 0 : 1 - titleFade).toFixed(4));
+    stage.style.setProperty('--eye-opacity', (light * (1 - shell)).toFixed(4));
     stage.style.setProperty('--shell-opacity', shell.toFixed(4));
-    stage.style.setProperty('--shell-light', (.25 + shell * 1.3).toFixed(4));
-    stage.style.setProperty('--word-opacity', (reducedMotion.matches ? 1 : 1 - light).toFixed(4));
-    // Leave the opening uninterrupted; bring navigation in as the reveal completes.
+    stage.style.setProperty('--word-opacity', (reducedMotion.matches ? 1 : 1 - titleFade).toFixed(4));
+    // Leave the opening uninterrupted; bring navigation in before the pinned stage releases.
     const visible = reducedMotion.matches ? window.scrollY > 80 : progress > .9;
     header.classList.toggle('is-visible', visible);
     header.inert = !visible;
@@ -136,7 +137,7 @@
       img.src = media.src;
       if (key === 'hero') {
         const eye = figure.querySelector('.hero-eye');
-        eye.src = media.src;
+        eye.src = media.lightSrc || media.src;
         eye.style.objectFit = media.fit || 'contain';
         eye.style.objectPosition = media.position || '50% 50%';
       }

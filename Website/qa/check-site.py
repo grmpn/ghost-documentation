@@ -42,7 +42,10 @@ for ref in page.refs:
 
 for css in root.glob('*.css'):
     for ref in re.findall(r"url\(['\"]?([^)'\"]+)", css.read_text()):
-        assert (root / ref).is_file(), f'Missing CSS resource in {css.name}: {ref}'
+        if ref.startswith('#'):
+            assert ref[1:] in page.ids, f'Missing inline SVG reference in {css.name}: {ref}'
+        else:
+            assert (root / ref).is_file(), f'Missing CSS resource in {css.name}: {ref}'
 
 served = []
 for path in root.rglob('*'):

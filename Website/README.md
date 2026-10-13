@@ -5,16 +5,69 @@ Ghost project remains the source of truth for facts, engineering notes, and orig
 
 ## Current iteration
 
-`iterations/08-vector-reveal/` — the current responsive, buildless prototype.
-The opening spells GHOST with a hollow silver vector diamond replacing the O. Rajdhani
+`iterations/10-sliding-reveal/` is the latest local comparison, inspired by the composition
+of [Lusion’s Synthetic Human case study](https://lusion.co/projects/synthetic_human/).
+Preview: `http://127.0.0.1:4173/iterations/10-sliding-reveal/`.
+
+- Opens with GHOST, personal-project context and ownership on the left, and the supplied
+  light-only photograph in a sharp rectangular box on the right.
+- The whole case study now travels horizontally. Ordinary wheel/touch scrolling drives
+  one stationary viewport; chapters enter from the right and leave to the left. There is
+  no vertical section movement. The sequence ends at the closing panel rather than looping.
+- The opening retains the light-only → full-lit Ghost transition and specifications.
+  After that reveal, the entire opening slides left and the demo enters from the right.
+- All ten sections remain; mechanics, board details, lighting and reflection get additional
+  horizontal panels so content fits. There are 15 panels including the opening and ending.
+- Neutral iteration 02-style navigation, Rajdhani page text, sharp corners and normal
+  cursor remain. Chapter links, hash targets and keyboard focus move to the relevant panel.
+- `horizontal.css` owns the continuous layout; `app.js` constructs panels from the existing
+  semantic sections. Native vertical input maps to the track’s horizontal translation.
+  Horizontal trackpads and left/right arrow keys are supported. The first 0.58 viewport
+  widths of scroll drive the hero reveal, with specs becoming complete at the handoff
+  (no still hold). Horizontal travel then advances at 1.2 times the scroll distance.
+- Phones also use the horizontal sequence, with compact layouts that fit one viewport.
+  Reduced motion omits the opening choreography and uses instant chapter jumps. Print
+  and no-JavaScript views retain readable document flow. No vertically scrolling inner panels.
+- Source PNGs are unchanged. The 16:9 frame is larger (72vw, capped by viewport height)
+  and extends 18% beyond the right edge initially and 18% beyond the left edge at the
+  specifications pose. Opening text translates up to 18vw left while fading. Phones use
+  a 112vw frame below the copy with the same edge-crop proportion. Full local
+  Rajdhani 400/500/600 files, source metadata and SIL OFL remain bundled. Existing
+  outlined engineering artwork is retained. All evidence qualifications remain.
+- Prior iterations are preserved. This is a local comparison, not final acceptance.
+
+See `qa/10-review.md` for validation and limits.
+
+## Earlier comparisons
+
+Latest comparison: `iterations/09-monochrome-real-image/` copies iteration 02 with
+the builder-selected `Assets/Hero/Front-Ghost/Full-Lit-Transparent.png` as its hero.
+Preview at `http://127.0.0.1:4173/iterations/09-monochrome-real-image/`.
+The image is copied byte-for-byte into `assets/ghost-assembly-full.png`; iteration
+02's layout, typography, image filters and fade masks are retained. The photo is
+scaled to 1.75 times its contained size to approximate the former square reference's
+visual footprint; overlap with the text is accepted for this comparison. Hero preload,
+fallback dimensions, alt text and caption match the real assembly image.
+Iterations 02 and 08 remain preserved; this comparison does not select a final design.
+
+`iterations/08-vector-reveal/` — preserved vector-reveal prototype.
+The opening spells GHOST with the builder's white Ghost-pattern SVG replacing the O. Rajdhani
 Semibold 600 is the current angular title, with crisp silver lettering (`#DFE1E8`) without chromatic aberration,
-blur, or text glow. The SVG contains two angular sides and no interior circle. Purple `#20183E`
+blur, or text glow. The supplied SVG profile is preserved, filled white and rotated 45° counterclockwise. Purple `#20183E`
 and cyan remain on selected interactive surfaces. Controls and navigation
 use rectangular silhouettes with square corners and restrained violet fills. Scrolling
-fades the lettering and vector together as the real blue light appears. The real light
-holds alone before the shell fades in. The full Ghost remains briefly
+fades the lettering and vector together as the real blue light appears. The full Ghost
+starts appearing during that fade and is fully visible when the letters disappear.
+The light-only photo is a passing transition layer with no solo hold. The full Ghost remains
 before the pinned opening releases into the project details. Navigation appears near the
 end of the reveal. There is no automatic playback or scroll interception.
+
+The hero now uses the real assembly photos selected from `Assets/Hero/Front-Ghost/`.
+The complete light-only capture fades in and out during the overlapping transition
+to the complete full-lit transparent image. Both display exactly as supplied, including
+their background glow and original transparency. No photo filters, masks, color grading,
+blend modes or reduced final opacity are applied. The images cover the full viewport with
+slight overscan to hide canvas edges; Ghost cropping is accepted by the builder.
 
 The builder's latest sequence moves from a simple vector to the real light to the full
 Ghost. Iteration 07 preserves the previous opening. Body copy remains
@@ -34,7 +87,7 @@ From the project root:
 node Website/preview.mjs
 ```
 
-Open `http://127.0.0.1:4173/iterations/08-vector-reveal/` for the current prototype, or
+Open `http://127.0.0.1:4173/iterations/10-sliding-reveal/` for the current prototype, or
 `http://127.0.0.1:4173/` for the iteration index. Stop the server with Ctrl+C. Pass a
 different port as the last argument if needed. No package installation or build is required.
 
@@ -45,13 +98,15 @@ view switches, media configuration, and the mobile menu use JavaScript.
 ## Organization
 
 - `index.html` — visual iteration index.
-- `iterations/08-vector-reveal/` — the current vector-to-light-to-shell scroll reveal.
+- `iterations/10-sliding-reveal/` — current boxed photo and sliding specifications reveal.
+- `iterations/08-vector-reveal/` — preserved vector-to-light-to-shell scroll reveal.
 - `iterations/07-violet-prism/` — preserved Rajdhani Semibold title with the real light from the start.
 - `iterations/08-vector-reveal/hero.css` — Rajdhani title, opening composition, and scroll reveal.
 - `iterations/08-vector-reveal/prism.css` — clean silver title, violet/blue surface accents, and rectangular controls.
-- `iterations/08-vector-reveal/assets/` — display copies, Ubuntu and Rajdhani fonts/licenses, and the temporary front image.
+- `iterations/08-vector-reveal/assets/` — real assembly display copies, vector, technical figures, and local fonts/licenses.
 - `iterations/08-vector-reveal/media.js` — hero, demo, packaging, and rear-shell media configuration.
-- `../Assets/Hero/ghost-diamond-outline.svg` — editable vector master; a display copy lives in iteration 08's assets.
+- `../Assets/GhostPattern.svg` — builder-supplied profile; `assets/ghost-light-pattern.svg` is the white filled display copy.
+- `qa/prepare-ghost-pattern.py` — joins the source's 36 existing line/arc segments into two filled contours without moving geometry.
 - `iterations/06-symbol-reveal/` — preserved silver title and sequential text-out/shell-in reveal.
 - `iterations/05-white-shell/` — preserved white shell and inverse title across the lower spike.
 - `iterations/04-centered-hero/` — preserved O-to-eye overlay; rejected because the word looked off-center.
@@ -76,18 +131,24 @@ file into the iteration's `assets/` folder, then update its entry in `media.js`:
 - For the demo, set `src`, optional `poster`, and an optional WebVTT `captions` path.
   A real video player appears only when a video source is supplied.
 - The hero has fallback images, a screen-reader caption, and a visible caption below the
-  opening. Update those too for an accurate no-JavaScript view. Iteration 08 uses two
-  copies of the same photo for the emerging neutral shell and isolated light; `app.js`
-  updates both. The third image is the independent vector and is not replaced by media.js.
-- Recheck the symbol mask, eye center, and shell color treatment in `hero.css` when replacing
-  the image. The source eye at 49.6% / 49.5% aligns the vector and real light with the
-  central title slot. Recheck the vector size/alignment after replacing the source photo.
+  opening. Update those too for an accurate no-JavaScript view. `hero.src` selects the
+  full assembly, while `hero.lightSrc` selects the light-only image. The third image is
+  the independent vector and is not replaced by media.js.
+- The registered 3840 × 2160 photos use a 16:9 canvas, with the eye at 51.7578% / 45.7176%
+  (approximately 1987.5 / 987.5 source pixels). Photo width is `max(104vw, 204svh)`;
+  this covers all viewport edges while positioning the light at 50% / 52% of the stage.
+  The SVG shares that center, with width 6.8628% of the photo canvas and a -45° rotation.
+  Its rotated contour matches the photographed pattern's approximately 312 px span.
+  Recheck alignment when replacing sources. Keep raw colors and background glow:
+  only scroll-transition opacity changes. The light-only image fades to 0
+  while the full image fades to 1; there is no persistent replacement eye layer.
 - `prism.css` owns the new palette and geometric decoration. Main copy and engineering
   figure colors retain their established contrast; selected rectangular controls use a
   blue edge, and focus outlines remain visible.
 - `app.js` maps scrolling through a 260-viewport-percent runway to the staged reveal:
-  8–32% fades the vector and text together into the real light; 32–58% holds the light
-  alone; 58–90% reveals the shell; navigation appears after 90%. The sequence reverses
+  8–32% fades the vector and text together. The light-only entrance spans 8–20%, multiplied
+  by the inverse of the full-lit fade at 14–32%, so it never reaches full opacity or holds alone.
+  The full image is complete at 32%; navigation appears after 90%. The sequence reverses
   with scroll. Reduced-motion and disabled JavaScript show a static full Ghost and
   complete title, with the vector hidden. There is no scroll interception.
 
@@ -104,8 +165,11 @@ Existing source masters are untouched:
 | `main-pcb-v1-front.png` | `Assets/Electrical-Renders/Ghost_MainPCB_V1_Front.png` |
 | `led-pcb-front.png` | `Assets/Electrical-Renders/ghost_LEDPCB_Front.png` |
 | `mechanism-closed.png` / `mechanism-mid.png` / `mechanism-open.png` | `Assets/Cam-Follower-Renders/0001.png` / `0045.png` / `0090.png` |
-| `ghost-front.webp` | Byte-for-byte copy of `Assets/temp/Ghost.webp`; temporary reference image, not a final build photograph |
-| `ghost-diamond-outline.svg` | Display copy of `Assets/Hero/ghost-diamond-outline.svg`; simple vector abstraction, not physical/CAD evidence |
+| `ghost-assembly-full.png` | Byte-for-byte copy of `Assets/Hero/Front-Ghost/Full-Lit-Transparent.png`, 3840 × 2160 RGBA; builder-selected assembly presentation cutout |
+| `ghost-assembly-light.png` | Byte-for-byte copy of `Assets/Hero/Front-Ghost/IMG_7039_05.667s_light-only.png`, 3840 × 2160 RGB; registered light-only capture |
+| `ghost-front.webp` | Retained unused reference copy of `Assets/temp/Ghost.webp`; earlier iterations still use it |
+| `ghost-light-pattern.svg` | White filled version of `Assets/GhostPattern.svg`; all 36 original line/arc segments retained, with rotation applied in CSS |
+| `ghost-diamond-outline.svg` | Retained unused earlier primitive from `Assets/Hero/ghost-diamond-outline.svg` |
 | `ghost-study.svg` (iteration 01 only) | Illustrative layout placeholder; not physical or CAD evidence |
 | `ubuntu-sans-*.ttf` | Ubuntu Sans weights 400/500/600 from Google Fonts; Canonical font license included |
 | New title fonts in iteration 03 | Ubuntu Sans 800, Sora 800, Space Grotesk 700, Rajdhani 700 from Google Fonts; exact URLs in `assets/type-study-sources.json`, licenses bundled |
@@ -116,11 +180,11 @@ Font sources: [Google Fonts](https://fonts.google.com/specimen/Ubuntu+Sans) and
 [Canonical license](https://github.com/canonical/Ubuntu-Sans-fonts/blob/main/LICENCE.txt).
 
 All prose is draft copy based on `Knowledge/Sections/` and current validation status.
-All current versions preserve the front image's transparency. Iteration 08 uses CSS
-brightness/desaturation and a masked symbol layer. The accessible H1 is named GHOST while
-the visual center slot first holds the vector and then the real light. The shell is layered above
-the silver letters but only revealed after they have fully faded. The source image is unchanged and
-its use does not complete `HERO-01`. Glass surfaces have an opaque
+Iteration 08 displays the supplied PNGs without additional image processing, preserving
+their colors, background glow and alpha. The accessible H1 is named GHOST while
+the visual center slot first holds the vector and then the real light. The full-lit image
+appears while the silver letters fade and is complete when they disappear. Both source images are unchanged;
+final Hero acceptance and hardware evidence remain open under `HERO-01`. Glass surfaces have an opaque
 fallback for unsupported blur and reduced-transparency preferences.
 The CAD cam illustration is not evidence of an installed, validated revision. The routine
 overview is a programmed sequence, not captured test data. Firmware and CAD download
