@@ -1,0 +1,207 @@
+/* Iteration 11: opaque charcoal surfaces and monochrome interface accents. */
+:root {
+  --accent: var(--white);
+  --light-blue: var(--white);
+  --violet: #303033;
+  --violet-edge: #919198;
+}
+/* Optical alignment compensates for the large G's left side bearing. */
+#hero-title { margin-inline-start: -.045em; }
+.hero-bottom { justify-content: flex-end; }
+@media screen {
+  :root { --hero-left: 4.2vw; }
+  .horizontal-story .story-progress { left: var(--hero-left); }
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+  .horizontal-story .opening-copy {
+    left: var(--hero-left);
+    top: 21svh;
+    bottom: auto;
+    height: 67svh;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(var(--intro-shift, 0vw));
+  }
+  .horizontal-story .opening-copy .ownership { margin-top: auto; }
+}
+@media screen and (max-width: 600px) {
+  :root { --hero-left: 6vw; }
+}
+@media screen and (max-width: 600px) and (prefers-reduced-motion: no-preference) {
+  .horizontal-story .opening-copy { top: 14svh; height: 46svh; }
+}
+@media screen {
+  body { background: var(--bg); }
+  /* The near-black backing fades in with the full-lit transparent photograph. */
+  .hero-art .hero-shell { background: var(--bg); }
+  /* Copy reveals behind the moving photograph, regardless of DOM order. */
+  .hero-art { z-index: 2; }
+  .opening-copy, .hero-details { z-index: 1; }
+
+  .glass, .hero-art, .site-header::before,
+  .site-header nav.js-nav, .dialog-toolbar {
+    background: var(--surface);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  /* Floating navigation: text and controls sit directly on the page. */
+  .site-header.glass { background: transparent; }
+  .site-header::before { content: none; }
+  .site-header .wordmark, .site-header nav a,
+  .site-header .menu-toggle:not([hidden]) { font-size: clamp(16px, 1.2vw, 24px); font-weight: 600; }
+  .demo-stage, .mechanism-figure > img, .pcb-figure > img,
+  .hero-specs, .board-notes { background: transparent; }
+  .placeholder-figure::before { display: none; }
+  .rear-study span { background: var(--surface-2); }
+
+  .segmented button::before, .dialog-close::before {
+    background: var(--surface-2);
+    border: 0;
+    box-shadow: none;
+  }
+  .segmented button:hover::before, .segmented button:focus-visible::before,
+  .dialog-close:hover::before, .dialog-close:focus-visible::before {
+    background: #29292c;
+  }
+  .segmented button[aria-pressed=true]::before { background: var(--violet); }
+  .segmented button[aria-pressed=true] { color: var(--white); }
+
+  /* Matching board frames share header, image, control-slot and caption alignment. */
+  .pcb-comparison .pcb-figure {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 68px auto 48px auto;
+  }
+  .story-panel .pcb-comparison .figure-topline { padding: 16px; }
+  .pcb-comparison .segmented { grid-row: 3; }
+  .story-panel .pcb-comparison figcaption {
+    grid-row: 4;
+    padding: 16px;
+    margin-top: auto;
+    min-height: 84px;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .site-header { width: calc(100% - 64px); padding-inline: 0; }
+  .site-header nav { gap: clamp(18px, 2vw, 40px); }
+  .site-header nav.js-nav { background: transparent; }
+}
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .pcb-comparison .pcb-figure { grid-template-rows: 87px auto 48px auto; }
+  .story-panel .pcb-comparison .figure-topline { display: grid; gap: 0; }
+}
+
+/* Crop the empty sides of the source canvases, excluding the orientation gimbal.
+   A centered 1377px square retains the complete boards in all three 2362px renders. */
+.pcb-crop {
+  grid-row: 2;
+  position: relative;
+  overflow: hidden;
+  width: min(calc(100% - 24px), 40svh);
+  aspect-ratio: 1;
+  margin: auto;
+}
+.pcb-crop img, .image-dialog[data-crop=pcb] .dialog-media > img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  max-width: none;
+  min-width: 0;
+  transform: translateX(-50%);
+}
+.dialog-media > img { width: 100%; min-width: 700px; background: var(--surface); object-fit: contain; }
+.image-dialog[data-light=true] .dialog-media > img { background: #e5e5e6; }
+.image-dialog[data-crop=pcb] { width: min(850px, 94vw); }
+.image-dialog[data-crop=pcb] .dialog-media {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 78svh);
+  aspect-ratio: 1;
+  margin: auto;
+}
+.aperture { background: var(--quiet); }
+.aperture::before { background: var(--surface); }
+.aperture::after { background: var(--surface-2); box-shadow: none; }
+
+@media screen {
+  .story-panel.electronics-panel { padding-block: 100px 48px; gap: 18px; }
+  .story-panel .final-boards .pcb-figure { grid-template-rows: 56px auto 44px auto; }
+  .story-panel .final-boards figcaption { min-height: 64px; font-size: 12px; padding: 12px 16px; }
+  .story-panel .final-boards .board-notes h3 { font-size: clamp(20px, 1.7vw, 28px); }
+  .story-panel .final-boards .board-notes p { font-size: clamp(14px, 1.15vw, 17px); line-height: 1.45; }
+  .story-panel .final-boards .board-notes > div + div { margin-top: 18px; }
+  .story-panel .final-boards .pcb-crop { width: min(calc(100% - 24px), 32svh); }
+  .segmented button:hover, .dialog-close:hover, .segmented button:focus-visible { color: var(--white); }
+}
+@media screen and (min-height: 760px) {
+  .story-panel .final-boards .pcb-crop { width: min(calc(100% - 24px), 40svh); }
+}
+@media screen and (max-width: 600px) {
+  .electronics-panel .section-heading { max-width: 88vw; }
+}
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .story-panel .final-boards .pcb-figure { grid-template-rows: 87px auto 44px auto; }
+}
+
+/* White engineering chapters form one continuous band with hard chapter edges.
+   Light gray figure surfaces use dark copy and retain the original media colors. */
+@media screen {
+  .light-chapter {
+    --muted: #202022;
+    --quiet: #303033;
+    --accent: #070708;
+    background: #efeff0;
+    color: #070708;
+  }
+  .light-chapter .mechanism-key { color: var(--muted); }
+  .light-chapter .architecture-figure .diagram-link { background: var(--surface); }
+  .light-chapter .glass {
+    --surface: color-mix(in srgb, #efeff0 90%, #070708);
+    --surface-2: #b8b8be;
+    --muted: #202022;
+    --quiet: #303033;
+    --accent: #070708;
+    --light-blue: #070708;
+    color: #070708;
+  }
+  .light-chapter .figure-topline, .light-chapter .text-link,
+  .light-chapter .placeholder-tag, .light-chapter .pending-text,
+  .light-chapter .routine-phases small, .light-chapter .packaging-study p,
+  .light-chapter .rear-study span { color: var(--muted); }
+  .light-chapter .segmented button { color: #202022; }
+  .light-chapter .segmented button:hover::before,
+  .light-chapter .segmented button:focus-visible::before { background: #919198; }
+  .light-chapter .segmented button:hover,
+  .light-chapter .segmented button:focus-visible { color: #070708; }
+  .light-chapter .segmented button[aria-pressed=true] { color: #efeff0; }
+  .light-chapter .segmented button[aria-pressed=true]::before { background: #303033; }
+  .light-chapter .text-link:hover, .light-chapter .text-link:focus-visible { color: #070708; }
+  /* Blend the fixed chrome per pixel, so even a letter crossing the moving
+     white/black boundary responds immediately, without a global theme fade. */
+  .site-header, .horizontal-story .story-progress { mix-blend-mode: difference; }
+  .site-header .wordmark, .site-header nav a:hover,
+  .site-header nav a:focus-visible { color: var(--white); }
+}
+@media screen and (max-width: 600px) {
+  /* An expanded menu is an opaque reading surface; blending it would expose
+     chapter text through the menu and make the links overlap visually. */
+  .site-header:has(.is-open) { mix-blend-mode: normal; background: var(--surface); }
+}
+
+@media screen and (forced-colors: active) {
+  .light-chapter { background: Canvas; color: CanvasText; }
+  .site-header, .horizontal-story .story-progress { mix-blend-mode: normal; }
+  body { background: Canvas; }
+  .glass, .hero-art, .site-header::before, .site-header nav.js-nav,
+  .dialog-toolbar, .segmented button::before, .dialog-close::before { background: Canvas; }
+  .segmented button[aria-pressed=true]::before { background: Highlight; }
+  .segmented button[aria-pressed=true] { color: HighlightText; }
+}

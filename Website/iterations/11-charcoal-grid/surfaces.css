@@ -162,6 +162,7 @@
     color: #070708;
   }
   .light-chapter .mechanism-key { color: var(--muted); }
+  .light-chapter .architecture-figure .diagram-link { background: var(--surface); }
   .light-chapter .glass {
     --surface: color-mix(in srgb, #efeff0 90%, #070708);
     --surface-2: #b8b8be;

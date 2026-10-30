@@ -1,0 +1,10 @@
+{
+  "family": "Rajdhani",
+  "weight": 600,
+  "file": "rajdhani-600-title.ttf",
+  "characters": "GHOST",
+  "bytes": 5488,
+  "stylesheet": "https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&text=GHOST&display=swap",
+  "source": "https://fonts.gstatic.com/l/font?kit=LDI2apCSOBg7S-QT7pbYF8Osa-eJ2_Vipw&skey=d9fd2c812bccb92a&v=v17",
+  "license": "rajdhani-OFL.txt"
+}

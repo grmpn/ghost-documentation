@@ -1,6 +1,10 @@
 .obsidian/
 .codex-build/
 Demo-Scripts/
-Assets/
+# Keep original project media local; allow each website iteration's display assets.
+/Assets/
+# Preserve the older prototypes' existing local-only asset status.
+/Website/iterations/*/assets/
+!/Website/iterations/12-version-1.0/assets/
 Knowledge/
 AGENTS.md

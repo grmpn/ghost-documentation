@@ -97,7 +97,7 @@
     </section>
 
     <section id="architecture" class="section wrap light-chapter" aria-labelledby="architecture-title">
-      <div class="section-heading"><div><p class="eyebrow">03 / ARCHITECTURE</p><h2 id="architecture-title">Separate power.<br>Shared control.</h2></div><p>Two 5 V inputs supply control and actuation. All outputs share the main board’s ground reference.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">03 / ARCHITECTURE</p><h2 id="architecture-title">Separate power.<br>Shared control.</h2></div></div>
       <figure class="architecture-figure glass">
         <div class="figure-topline"><span>POWER &amp; SIGNAL FLOW</span><a class="text-link" href="assets/system-architecture.svg" data-zoom data-caption="System architecture — separate 5 V inputs, shared ground, five servo outputs, and one LED control output.">Expand diagram <span aria-hidden="true">↗</span></a></div>
         <a class="diagram-link" href="assets/system-architecture.svg" data-zoom data-caption="System architecture — separate 5 V inputs, shared ground, five servo outputs, and one LED control output."><img src="assets/system-architecture.svg" alt="Micro-USB powers the regulated ESP32-S3 domain. Power-only USB-C supplies the servos and LED board. All components share ground, with six independent PWM outputs." loading="lazy"></a>
@@ -109,16 +109,26 @@
       <div class="section-heading"><div><p class="eyebrow">04 / MECHANICS</p><h2 id="mechanical-title">Four spikes.<br>One repeated principle.</h2></div></div>
       <div class="mechanism-layout">
         <figure class="mechanism-figure glass">
-          <div class="figure-topline"><span>CAM / FOLLOWER / RETURN SPRING</span><span>CAD</span></div>
+          <div class="figure-topline"><span>CAM / FOLLOWER / RETURN SPRING</span></div>
+          <div class="mechanism-stage">
           <img id="mechanism-image" src="assets/mechanism-closed.png" width="2000" height="2000" alt="CAD source frame of the integrated spike and follower in the closed pose above the orange cam and servo." loading="lazy">
+          <div class="mechanism-key"><span><i class="key-cam"></i> Cam</span><span><i class="key-spring"></i> Spring</span><span><i class="key-spike"></i> Spike / follower</span></div>
+          </div>
           <div class="segmented" role="group" aria-label="Mechanism CAD pose"><button type="button" data-pose="closed" aria-pressed="true">Closed</button><button type="button" data-pose="mid" aria-pressed="false">Mid travel</button><button type="button" data-pose="open" aria-pressed="false">Open</button></div>
           <figcaption>Selected cam revision in CAD. Installation and measured output travel remain pending.</figcaption>
         </figure>
-        <div class="mechanism-copy prose"><h3>Rotation becomes articulation.</h3><p>The servo-driven cam pushes a follower integrated into the spike. As the cam radius changes, the spike pivots around its hinge.</p><p>A preloaded torsion spring keeps the follower against the cam, allowing all four spikes to return regardless of orientation.</p><div class="mechanism-key"><span><i class="key-cam"></i> Cam</span><span><i class="key-spring"></i> Spring</span><span><i class="key-spike"></i> Spike / follower</span></div><p class="technical-note">28.62–41 mm cam diameter across a half-turn.<br>CAD geometry, not measured spike travel.</p></div>
+        <div class="mechanism-copy prose"><div class="mechanism-explanation"><h3>Rotation becomes articulation.</h3><p>The servo-driven cam pushes a follower integrated into the spike. As the cam radius changes, the spike pivots around its hinge.</p><p>A preloaded torsion spring keeps the follower against the cam, allowing all four spikes to return regardless of orientation.</p></div><p class="technical-note">28.62–41 mm cam diameter across a half-turn.<br>CAD geometry, not measured spike travel.</p></div>
       </div>
-      <div class="paired-details">
-        <article><figure class="placeholder-figure glass" data-media="packaging"><div class="figure-topline"><span>INTERNAL PACKAGING</span><span class="placeholder-tag">PENDING</span></div><div class="packaging-study" data-media-stage aria-label="Abstract placeholder for an exploded CAD assembly"><span class="assembly-layer layer-one"></span><span class="assembly-layer layer-two"></span><span class="assembly-layer layer-three"></span><p>Exploded assembly</p></div><figcaption>Final CAD view pending.</figcaption></figure><h3>Designed around the axes.</h3><p>The servo housing locates the mechanisms. A shared central opening routes wires forward through the main PCB.</p></article>
-        <article><figure class="placeholder-figure glass" data-media="rear"><div class="figure-topline"><span>REAR-SHELL ROTATION</span><span class="placeholder-tag">PENDING</span></div><div class="rear-study" data-media-stage aria-label="Placeholder for left, home, and right rear-shell photographs"><div><span>↶</span><small>LEFT</small></div><div><span>◎</span><small>HOME</small></div><div><span>↷</span><small>RIGHT</small></div></div><figcaption>Final shell validation and capture pending.</figcaption></figure><h3>Balance support and friction.</h3><p>The rear servo supports and rotates the shell. Light contact with the front shell restrains wobble; excess preload adds drag.</p></article>
+      <div class="assembly-layout">
+        <figure class="assembly-figure glass" data-media="packaging">
+          <div class="figure-topline"><span>EXPLODED ASSEMBLY</span><a class="text-link" href="assets/exploded-assembly.png" data-zoom data-caption="Exploded CAD assembly — front lighting layers, middle shell, main PCB, servo housing, spike mechanisms and rear shell.">Enlarge <span aria-hidden="true">↗</span></a></div>
+          <a class="assembly-image" href="assets/exploded-assembly.png" data-zoom data-caption="Exploded CAD assembly — front lighting layers, middle shell, main PCB, servo housing, spike mechanisms and rear shell."><img src="assets/exploded-assembly.png" width="3840" height="2160" alt="Exploded Ghost assembly showing the layered front face and LED board at left, middle shell and main PCB, central servo housing with orange cams, and rear shell at right; spike parts separate above and below." loading="lazy"></a>
+          <figcaption>Exploded CAD assembly · parts separated for clarity.</figcaption>
+        </figure>
+        <div class="assembly-copy prose">
+          <div><h3>A shared structural core.</h3><p>The main PCB sits inside the middle shell. The four-part servo housing is assembled separately, then fastened over the board. Its central opening routes servo wires to the front-side connections.</p></div>
+          <div><h3>Layered for assembly and access.</h3><p>The removable front assembly layers the LED board, face pattern and acrylic panels while allowing access to reset and boot buttons. Spike/followers and springs attach next, then cams and the rear shell. M2 screws and heat-set inserts make the joints reusable.</p></div>
+        </div>
       </div>
     </section>
 
@@ -160,7 +170,11 @@
 
     <section id="future" class="section wrap" data-reading="short" aria-labelledby="future-title">
       <div class="section-heading"><div><p class="eyebrow">08 / NEXT REFINEMENTS</p><h2 id="future-title">Refine what works.</h2></div></div>
-      <div class="future-list"><article><span>MECHANICAL</span><h3>Broader follower contact.</h3><p>A focused geometry refinement within the existing clearances.</p></article><article><span>ELECTRONICS</span><h3>Better serviceability.</h3><p>Purposeful cable strain relief and a review of startup-sensitive GPIO choices.</p></article><article><span>SOFTWARE</span><h3>Reusable character actions.</h3><p>Named behaviors built from the existing motion and lighting helpers.</p></article></div>
+      <div class="future-list">
+        <article><span>MECHANICAL</span><h3>Update rear-shell rotation.</h3><p>The rear shell vibrated heavily during motion. Added foam damping made it partly workable, but the rotation mechanism still needs a more stable support and damping solution.</p></article>
+        <article><span>ELECTRONICS</span><h3>Better serviceability.</h3><p>LED-board wires snapped during assembly and needed resoldering plus hot-glue strain relief. Build cable support into the design and review the suspected startup-sensitive servo GPIOs.</p></article>
+        <article><span>SOFTWARE</span><h3>Reusable character actions.</h3><p>The fixed demo ties each gesture to one timeline, limiting reuse and live control. Build named behaviors from the existing motion and lighting helpers so actions can be triggered and combined.</p></article>
+      </div>
     </section>
   </main>
   <footer class="site-footer wrap"><div><a class="wordmark" href="#hero">GHOST</a><p>Personal engineering project · Inspired by <em>Destiny</em></p></div><div><span class="prototype-label">ITERATION 11 / CHARCOAL</span><p>Draft content · Final media pending</p><a href="#hero" class="text-link">Back to start ←</a></div></footer>

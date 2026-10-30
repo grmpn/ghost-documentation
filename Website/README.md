@@ -5,9 +5,32 @@ Ghost project remains the source of truth for facts, engineering notes, and orig
 
 ## Current iteration
 
-`iterations/11-charcoal-grid/` is the latest local comparison. It builds on iteration 10, inspired by the composition
+`iterations/12-version-1.0/` is the current Version 1.0, copied from iteration 11. It builds on iteration 10, inspired by the composition
 of [Lusion’s Synthetic Human case study](https://lusion.co/projects/synthetic_human/).
-Preview: `http://127.0.0.1:4173/iterations/11-charcoal-grid/`.
+Preview: `http://127.0.0.1:4173/iterations/12-version-1.0/`.
+
+## GitHub Pages
+
+Version 1.0 is the publication target. The repository's
+[deployment guide](../README.md#deploy-to-github-pages) explains the one-time GitHub
+settings and push steps. `.github/workflows/deploy-pages.yml` validates the current
+iteration and publishes it directly at `https://grmpn.github.io/ghost-documentation/`.
+The iteration index, earlier prototypes, preview tooling, original project media and
+QA artifacts are excluded from the deployed artifact.
+
+Run `python Website/build-pages.py` from the project root to generate the same
+release in `.codex-build/github-pages/`. All resource URLs remain relative, so the
+site works under the repository URL without a redirect or a hardcoded base path.
+The current iteration permits indexing; earlier prototypes retain their noindex
+metadata. See [Pages QA](qa/pages-review.md) for verification and remaining limits.
+
+## Version 1.0 details
+
+Version 1.0 embeds `Assets/Final_Routine.MOV` as an 840×840 MP4, starting at source
+0:27 and continuing to the end (76.33 seconds). Original sound is retained until
+source 1:10 / website 0:43, then muted. Crop: 840×840 at x=120, y=560 after
+auto-rotation. Originals remain untouched. Results and reflection share one panel;
+Quinn Winkler is credited on the closing page. See `qa/12-review.md`.
 
 - Opens with GHOST, personal-project context and ownership on the left, and the supplied
   light-only photograph in a sharp rectangular box on the right.
@@ -17,10 +40,10 @@ Preview: `http://127.0.0.1:4173/iterations/11-charcoal-grid/`.
 - The opening retains the light-only → full-lit Ghost transition and specifications.
   After that reveal, the entire opening slides left and the demo enters from the right.
 - Nine sections remain; control context is folded into In motion and the separate routine
-  timeline is removed. Mechanics and reflection have additional horizontal panels.
-  There are 12 panels including the opening and ending.
+  timeline is removed. Mechanics has an additional horizontal panel.
+  There are 11 panels including the opening and ending.
 - In motion pairs the title and scripted/open-loop performance explanation on the left
-  with the capture panel on the right. Phones stack these, with a compact short-phone
+  with the square final-routine video on the right. Phones stack these, with a compact short-phone
   treatment. The navigation links directly to In motion.
 - Neutral iteration 02-style navigation, Rajdhani page text, sharp corners and normal
   cursor remain. Chapter links, hash targets and keyboard focus move to the relevant panel.
@@ -54,6 +77,16 @@ on desktop, 32/16/12px for compact viewports and 28/14/12px on the smallest phon
 Long panels start at 18svh; Brief, Reflection, Future and the footer start at 28svh,
 with header-clearance minimums. Phones use 12svh/20svh plus minimum clearance. The
 specifications reveal shares these rules and omits the Compact by design label.
+
+Architecture, Four spikes and Revisions follow the supplied reference compositions:
+a broad architecture figure, larger mechanism figure with a vertical in-figure key,
+and revision headings stacked above their paragraphs on one guide. Next refinements
+explains rear-shell vibration/foam damping, LED-wire breakage, and the fixed routine's
+reuse limits. Short phones use a 720px Future panorama to keep the expanded copy legible.
+
+All figure headers and captions share 16px text insets, with top-aligned labels and
+bottom-aligned captions. Redundant CAD/PENDING corner tags are removed; captions
+retain evidence status. The shared rules live in `type-layout.css`.
 
 See `qa/11-review.md` for validation and limits.
 
@@ -106,7 +139,7 @@ From the project root:
 node Website/preview.mjs
 ```
 
-Open `http://127.0.0.1:4173/iterations/11-charcoal-grid/` for the current prototype, or
+Open `http://127.0.0.1:4173/iterations/12-version-1.0/` for the current prototype, or
 `http://127.0.0.1:4173/` for the iteration index. Stop the server with Ctrl+C. Pass a
 different port as the last argument if needed. No package installation or build is required.
 
@@ -117,7 +150,9 @@ view switches, media configuration, and the mobile menu use JavaScript.
 ## Organization
 
 - `index.html` — visual iteration index.
-- `iterations/11-charcoal-grid/` — current solid charcoal panels and final-board electronics.
+- `build-pages.py` — validates and stages the current iteration for GitHub Pages.
+- `iterations/12-version-1.0/` — current publication target with the final demo and consolidated Results.
+- `iterations/11-charcoal-grid/` — preserved solid charcoal panels and final-board electronics.
 - `iterations/10-sliding-reveal/` — preserved boxed photo and sliding specifications reveal.
 - `iterations/08-vector-reveal/` — preserved vector-to-light-to-shell scroll reveal.
 - `iterations/07-violet-prism/` — preserved Rajdhani Semibold title with the real light from the start.
@@ -180,11 +215,12 @@ Existing source masters are untouched:
 
 | Website asset | Project source |
 | --- | --- |
-| `system-architecture.svg` | `Assets/Electrical-Renders/Electrical-Architecture-GreyPCBs.svg` |
+| `exploded-assembly.png` | Byte-for-byte copy of `Assets/ExplodedAssembly.png`, 3840 × 2160; iteration 11 assembly panel |
+| `system-architecture.svg` | `Assets/Electrical-Renders/Electrical-Architecture-New.svg` (iteration 11; byte-for-byte copy) |
 | `main-pcb-v2-front.png` / `main-pcb-v2-back.png` | `Assets/Electrical-Renders/Ghost_MainPCB_V2_Front.png` / `Ghost_MainPCB_V2_Back.png` |
 | `main-pcb-v1-front.png` | `Assets/Electrical-Renders/Ghost_MainPCB_V1_Front.png` |
 | `led-pcb-front.png` | `Assets/Electrical-Renders/ghost_LEDPCB_Front.png` |
-| `mechanism-closed.png` / `mechanism-mid.png` / `mechanism-open.png` | `Assets/Cam-Follower-Renders/0001.png` / `0045.png` / `0090.png` |
+| `mechanism-closed.png` / `mechanism-mid.png` / `mechanism-open.png` | `Assets/Cam-Follower-Final/0001.png` / `0045.png` / `0090.png` (iteration 11; unchanged final display renders) |
 | `ghost-assembly-full.png` | Byte-for-byte copy of `Assets/Hero/Front-Ghost/Full-Lit-Transparent.png`, 3840 × 2160 RGBA; builder-selected assembly presentation cutout |
 | `ghost-assembly-light.png` | Byte-for-byte copy of `Assets/Hero/Front-Ghost/IMG_7039_05.667s_light-only.png`, 3840 × 2160 RGB; registered light-only capture |
 | `ghost-front.webp` | Retained unused reference copy of `Assets/temp/Ghost.webp`; earlier iterations still use it |
@@ -210,6 +246,16 @@ The CAD cam illustration is not evidence of an installed, validated revision. Th
 overview is a programmed sequence, not captured test data. Firmware and CAD download
 links are intentionally absent while source-release decisions remain open.
 
-This is a local prototype. Hosting/domain choices and public release remain open.
-The page includes noindex metadata. Final media, factual review, performance polish,
-and final hardware evidence are required before publication.
+GitHub Pages is the selected host for Version 1.0. Repository settings, a release
+commit/push and the first hosted deployment remain user steps. Final visual/factual
+acceptance and formal hardware evidence remain distinct from deployment readiness;
+the existing page's evidence qualifications are retained.
+
+### Iteration 11 exploded assembly
+
+Packaging & assembly replaces the paired packaging/rear-shell placeholders with the
+supplied exploded render, an enlargement action, and assembly copy. `media.js` owns
+its source/alt/caption and HTML supplies the same image as a no-script fallback.
+The render scales 1.22× within its image area, using transparent margins without
+changing the source. Header/caption insets remain 16px. Phones stack the copy below;
+short phones retain readable columns on an 860px horizontal panel.

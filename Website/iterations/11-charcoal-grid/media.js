@@ -17,18 +17,10 @@ window.GHOST_MEDIA = {
     caption: 'Capture follows the final shell revision and supervised routine validation.'
   },
   packaging: {
-    src: null,
-    alt: 'Exploded CAD view of the shell, mechanisms, servo housing, main PCB, and lighting assembly.',
-    caption: 'Final CAD view pending.',
-    placeholder: true,
-    fit: 'contain',
-    position: '50% 50%'
-  },
-  rear: {
-    src: null,
-    alt: 'Rear shell at left, center, and right positions.',
-    caption: 'Final shell validation and capture pending.',
-    placeholder: true,
+    src: 'assets/exploded-assembly.png',
+    alt: 'Exploded Ghost assembly showing the layered front face and LED board at left, middle shell and main PCB, central servo housing with orange cams, and rear shell at right; spike parts separate above and below.',
+    caption: 'Exploded CAD assembly · parts separated for clarity.',
+    placeholder: false,
     fit: 'contain',
     position: '50% 50%'
   }

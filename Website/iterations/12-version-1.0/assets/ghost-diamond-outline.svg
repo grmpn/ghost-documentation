@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 160" fill="none">
+  <title>Ghost diamond outline</title>
+  <desc>Two simple angular chevrons form a hollow diamond, without the central circular light.</desc>
+  <g fill="#DFE1E8">
+    <path d="M68 5 5 67V93L68 155V132L26 80 68 28Z"/>
+    <path d="M76 5 139 67V93L76 155V132L118 80 76 28Z"/>
+  </g>
+</svg>

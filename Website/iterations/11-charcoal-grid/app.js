@@ -61,7 +61,7 @@
     first.className = 'story-panel';
     first.append(...section.childNodes);
     section.append(first);
-    if (section.id === 'mechanical') extraPanel(section, '.paired-details', 'Packaging & support.', 'packaging-details');
+    if (section.id === 'mechanical') extraPanel(section, '.assembly-layout', 'Packaging & assembly.', 'packaging-details');
     if (section.id === 'electronics') {
       first.classList.add('electronics-panel');
     }

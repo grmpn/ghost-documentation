@@ -1,0 +1,58 @@
+name: Deploy Ghost to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Website/iterations/12-version-1.0/**'
+      - 'Website/build-pages.py'
+      - '.github/workflows/deploy-pages.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Website/iterations/12-version-1.0/**'
+      - 'Website/build-pages.py'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Check JavaScript syntax
+        run: |
+          for file in Website/iterations/12-version-1.0/*.js; do
+            node --check "$file"
+          done
+      - name: Validate and prepare Version 1.0
+        run: python3 Website/build-pages.py
+      - name: Upload website
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .codex-build/github-pages
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,20 @@
+[
+  {
+    "file": "rajdhani-400.ttf",
+    "weight": 400,
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/rajdhani/Rajdhani-Regular.ttf",
+    "bytes": 377860
+  },
+  {
+    "file": "rajdhani-500.ttf",
+    "weight": 500,
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/rajdhani/Rajdhani-Medium.ttf",
+    "bytes": 384348
+  },
+  {
+    "file": "rajdhani-600.ttf",
+    "weight": 600,
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/rajdhani/Rajdhani-SemiBold.ttf",
+    "bytes": 390340
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "source": "Assets/Final_Routine.MOV",
+  "source_sha256": "614fb74e03b241841003697e4489ab3b3be93b5093810f4243397d6ed7b4319c",
+  "output": "assets/final-routine-square.mp4",
+  "output_sha256": "6608304b531e948166e427f0c710ee816763f5e4c8b7315b5aea84dc1bbf495b",
+  "source_start_seconds": 27,
+  "duration_seconds": 76.337,
+  "crop_after_auto_rotation": {
+    "width": 840,
+    "height": 840,
+    "x": 120,
+    "y": 560
+  },
+  "fps": 30,
+  "audio_mute_from_output_seconds": 43,
+  "audio_mute_from_source_seconds": 70,
+  "poster_output_seconds": 5,
+  "original_modified": false
+}

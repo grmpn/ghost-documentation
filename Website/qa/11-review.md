@@ -123,3 +123,63 @@
 - All 34 resources, nine sections, 29 unique IDs, seven image alternatives and anchors
   passed the resource check. app.js syntax passed. Physical validation, actual demo
   playback, no-script and print appearance were not validated in this styling pass.
+
+## Reference compositions and refinement motivations — 2026-10-12
+
+- Architecture: title above enlarged full-width figure; removed redundant side summary.
+- Mechanics: enlarged CAD figure; vertical in-figure Cam/Spring/Spike key, centered
+  explanatory copy and bottom-aligned geometry note. Pose switching verified to Open.
+- Revisions: aligned number column, headings above paragraphs; all three fit above
+  the progress indicator. Future: real rear-shell/foam and wire-breakage motivations;
+  software states the fixed-timeline limitation without a fabricated runtime failure.
+- Actual browser CSS viewports checked: 1700×900, 1360×720, 696×697, 390×844 and
+  312×675. All changed panels' text/captions fit vertically; small phones use the
+  existing horizontal reading path for Mechanics and a matching 720px Future panorama.
+- Architecture enlargement and closing worked on the compact phone. Native coordinate
+  activation was used after locator auto-scrolling displaced the horizontal track.
+- Resource/anchor/image-alternative checks passed. Original media and app.js unchanged.
+  Screenshot: `11-reference-mechanics.png`. Print/no-script not visually tested;
+  no hardware validation or final demo capture performed.
+
+## Updated architecture asset — 2026-10-13
+
+Replaced `system-architecture.svg` with a byte-identical copy of
+`Electrical-Architecture-New.svg` (1862 × 658.7). Checked the rendered diagram at
+696 × 697, image load, matching computed figure/diagram background colors, and the
+resource checker. Header/caption transparently show the same parent surface.
+Screenshot: `11-new-architecture.png`. Hardware validation unchanged.
+
+## Electrical and final mechanism asset refresh — 2026-10-13
+
+- Refreshed electrical diagram and all three 2000×2000 mechanism PNGs from the new
+  final-render folder. Source copies and HTTP-served files matched byte for byte.
+- Visually checked electrical artwork, Closed/Mid travel/Open mechanism views and
+  vertical legend at 696×697. Pose buttons work; coordinate activation used after
+  locator clicks did not change the selected state. Exact computed swatches match
+  source colors: #CE8B28 cam, #3D98CE spring, #EFEFF0 spike/follower.
+- Resource checks passed. Screenshot: `11-final-cam-renders.png`.
+- Existing CAD/installation qualifications remain; no new hardware validation claimed.
+
+## Consistent box text spacing — 2026-10-13
+
+Checked 1700×900, 696×697 and 390×844 CSS viewports. All seven boxed figures have
+16px header/caption padding and captions flush with their figure's bottom edge;
+wrapped PCB captions bottom-align and header action text aligns with labels.
+Mechanics CAD and packaging/rear PENDING tags removed; status remains in captions.
+Resource checks passed. Screenshot: `11-consistent-box-insets.png`. Existing narrow
+pane electronics composition remains dense near the progress line. Print not reviewed.
+
+## Dedicated exploded assembly — 2026-10-13
+
+- Replaced packaging/rear placeholders with supplied 3840×2160 exploded PNG and
+  assembly copy. Website copy and HTTP-served source match the original bytes.
+- New continuation title: Packaging & assembly. Existing hash `#packaging-details`
+  remains; original chapter/panel sequence retained. Rear figure/config removed.
+- Follow-up enlargement uses 1.22× image scaling inside the figure. Desktop visual
+  review confirms all components visible and header/caption clear.
+- Checked 1700×900, 696×697, 390×844 and 312×675. Normal phones stack the composition;
+  short phones use an 860px panorama, with copy/caption below 550px at 675px height.
+- Enlargement/closing verified on phone; full source uses the existing horizontally
+  scrollable dialog. Resource and JavaScript syntax checks passed. No print/no-script
+  visual or physical hardware validation performed.
+- Screenshot: `11-exploded-assembly.png` (final enlarged composition).

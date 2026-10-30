@@ -159,9 +159,9 @@ figcaption { color: var(--quiet); font-size: 11px; line-height: 1.65; padding: 1
 .mechanism-key { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 10px; color: #a8a8ac; margin-top: 24px; }
 .mechanism-key span { display: flex; align-items: center; gap: 7px; }
 .mechanism-key i { width: 6px; height: 6px; }
-.key-cam { background: #d39129; }
-.key-spring { background: #3c9bc9; }
-.key-spike { background: #d0d0d0; }
+.key-cam { background: #ce8b28; }
+.key-spring { background: #3d98ce; }
+.key-spike { background: #efeff0; }
 .technical-note { border-top: 1px solid var(--rule); padding-top: 20px; margin-top: 24px; font-size: 12px !important; line-height: 1.8; color: var(--quiet); }
 .paired-details { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
 .paired-details h3 { font-size: 23px; margin: 22px 0 12px; }

@@ -92,3 +92,35 @@
   #main .hero-details .details-intro { margin-top: 12px; }
   #main .hero-details .project-status { margin-top: 8px; }
 }
+
+/* One inset for all boxed figure labels and captions, including wrapped copy. */
+:root { --figure-text-inset: 16px; }
+#main .section figure.glass > .figure-topline {
+  padding: var(--figure-text-inset);
+  align-items: start;
+  align-content: start;
+  min-height: 0;
+}
+#main .section figure.glass > figcaption {
+  padding: var(--figure-text-inset);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 0;
+}
+#main #demo .stage-label {
+  top: var(--figure-text-inset);
+  left: var(--figure-text-inset);
+}
+#main #demo .stage-bottom {
+  bottom: var(--figure-text-inset);
+  left: var(--figure-text-inset);
+  right: var(--figure-text-inset);
+}
+
+#main .section .figure-topline .text-link { align-items: flex-start; }
+#main .section .figure-topline .text-link span {
+  height: auto;
+  font-size: inherit;
+  line-height: inherit;
+}

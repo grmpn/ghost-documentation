@@ -1,0 +1,152 @@
+/* Iteration 07: clean silver title, violet accents, rectangular controls. */
+:root {
+  --violet: #20183e;
+  --violet-edge: #77669d;
+  --light-blue: #88e4ef;
+}
+
+.hero-motion .hero-title {
+  color: #dfe1e8;
+}
+
+/* Separate glass background leaves dropdowns and focus outlines unclipped. */
+.site-header.glass {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid #77669d66;
+  background: linear-gradient(110deg, #20183eeb, #141419ed 40%, #15141aed);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.brand-symbol { background: var(--violet); border-color: #b4a9d0; }
+.brand-symbol::after { background: var(--light-blue); box-shadow: 0 0 8px #88e4ef55; }
+.site-header nav a[aria-current]::after {
+  width: 12px;
+  height: 1px;
+  background: var(--light-blue);
+}
+.site-header nav a:hover,
+.site-header nav a:focus-visible,
+.text-link:hover,
+.text-link:focus-visible {
+  color: #eef4f8;
+}
+
+/* Rectangular selectors with square corners and generous hit areas. */
+.segmented { gap: 6px; padding-top: 18px; }
+.segmented button,
+.dialog-close {
+  position: relative;
+  isolation: isolate;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  min-height: 44px;
+  padding: 10px 18px;
+  color: #bfc0ca;
+}
+.segmented button::before,
+.dialog-close::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: #202025;
+  box-shadow: inset 0 1px #ffffff12;
+  pointer-events: none;
+  transition: background 160ms ease;
+}
+.segmented button:hover,
+.segmented button[aria-pressed=true],
+.segmented button:focus-visible,
+.dialog-close:hover,
+.dialog-close:focus-visible {
+  background: transparent;
+  box-shadow: none;
+  color: #f0eff8;
+}
+.segmented button:hover::before,
+.segmented button:focus-visible::before,
+.dialog-close:hover::before,
+.dialog-close:focus-visible::before { background: var(--violet); }
+.segmented button[aria-pressed=true]::before {
+  background: linear-gradient(110deg, var(--violet), #29203f);
+  box-shadow: inset 3px 0 var(--light-blue), inset 0 1px #a398c377;
+}
+
+.text-link { display: inline-flex; align-items: center; min-height: 36px; }
+.text-link span {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-left: 10px;
+  font-size: 17px;
+  line-height: 1;
+  color: var(--light-blue);
+}
+.menu-toggle > span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: var(--light-blue);
+}
+.project-status > span { transform: rotate(45deg); }
+
+/* A hexagonal aperture for the labeled video placeholder, not a play control. */
+.aperture {
+  width: 52px;
+  height: 60px;
+  transform: none;
+  border: 0;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  background: linear-gradient(140deg, var(--light-blue), var(--violet-edge) 48%, var(--violet));
+}
+.aperture::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  clip-path: inherit;
+  background: #121016;
+}
+.aperture::after {
+  inset: 17px 13px;
+  border: 0;
+  clip-path: inherit;
+  background: var(--violet);
+  box-shadow: inset 0 2px var(--light-blue);
+}
+.demo-stage {
+  background: radial-gradient(ellipse at 50% 50%, #20183e4d, transparent 60%);
+}
+
+@media (max-width: 600px) {
+  .site-header nav.js-nav { background: #171320f5; border-color: #77669d66; }
+  .segmented { gap: 5px; }
+  .segmented button { padding-inline: 14px; }
+  .aperture { width: 36px; height: 42px; }
+  .aperture::after { inset: 12px 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .segmented button::before, .dialog-close::before { transition: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .site-header::before { background: #171320; backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+@media (forced-colors: active) {
+  .hero-motion .hero-title { color: CanvasText; }
+  .site-header::before, .segmented button::before, .dialog-close::before { clip-path: none; background: Canvas; }
+  .segmented button, .dialog-close { border: 1px solid ButtonText; }
+  .segmented button[aria-pressed=true] { outline: 2px solid Highlight; outline-offset: -3px; }
+}
