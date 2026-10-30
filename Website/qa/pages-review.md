@@ -46,7 +46,7 @@ Expected hosted URL: https://grmpn.github.io/ghost-documentation/.
 
 No commit/push, GitHub repository setting change or hosted workflow run was performed.
 Enable Settings → Pages → GitHub Actions, then commit/push the release files using
-the root README and check both jobs and the hosted site. Workflow action versions
+`Website/README.md` and check both jobs and the hosted site. Workflow action versions
 and settings follow GitHub's current
 [deployment guide](https://docs.github.com/en/get-started/start-your-journey/deploying-your-website-automatically).
 
